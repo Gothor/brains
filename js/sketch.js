@@ -62,6 +62,8 @@ function setup() {
   win = false;
 
   createCanvas(800, 800);
+  console.log(document.getElementById('game'));
+  document.getElementById('game').appendChild(canvas);
 
   hand = [];
 

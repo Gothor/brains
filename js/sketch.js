@@ -3,7 +3,7 @@ let hand;
 
 let levels;
 let win;
-let currentLevel = 36;
+let currentLevel = 0;
 let images;
 
 function preload() {

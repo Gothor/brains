@@ -5,30 +5,15 @@ class Grid {
       this.h = h;
       this.schema = grid;
       this.tileWidth = 200;
+      this.conditions = [];
   
       this.data = Array(this.schema.length);
       for (let i = 0; i < this.schema.length; i++) {
         this.data[i] = Array(this.schema[0].length);
       }
   
-      let maxX = 0,
-        minX = this.schema[0].length - 1;
-      let maxY = 0,
-        minY = this.schema.length - 1;
-  
-      for (let y = 0; y < this.schema.length; y++) {
-        for (let x = 0; x < this.schema[0].length; x++) {
-          if (this.schema[y][x] === 1) {
-            if (y < minY) minY = y;
-            if (y > maxY) maxY = y;
-            if (x < minX) minX = x;
-            if (x > maxX) maxX = x;
-          }
-        }
-      }
-  
-      let diffX = maxX - minX + 1;
-      let diffY = maxY - minY + 1;
+      let diffX = this.schema[0].length;
+      let diffY = this.schema.length;
       if (this.w / diffX < this.h / diffY) {
         this.tileWidth = (this.w - 200) / diffX;
       } else {
@@ -36,8 +21,6 @@ class Grid {
       }
       this.x = (this.w - this.tileWidth * diffX) / 2;
       this.y = (this.h - this.tileWidth * diffY) / 2;
-      this.minX = minX;
-      this.minY = minY;
     }
   
     setTile(x, y, tile) {
@@ -52,17 +35,15 @@ class Grid {
       }
     }
   
-    setCondition(x, y, condition) {
-      if (this.schema[y][x] !== 2) return;
-  
-      this.data[y][x] = condition;
+    addCondition(condition) {
+      this.conditions.push(condition);
     }
   
     getCoordinates(mouseX, mouseY) {
       let x = null,
         y = null;
-      let _x = Math.floor((mouseX - this.x) / this.tileWidth) + this.minX;
-      let _y = Math.floor((mouseY - this.y) / this.tileWidth) + this.minY;
+      let _x = Math.floor((mouseX - this.x) / this.tileWidth);
+      let _y = Math.floor((mouseY - this.y) / this.tileWidth);
       if (_y >= 0 && _y < this.data.length && _x >= 0 && _x < this.data[0].length && this.schema[_y][_x] === 1) {
         x = _x;
         y = _y;
@@ -82,7 +63,7 @@ class Grid {
         for (let x = 0; x < this.data[y].length; x++) {
           if (this.schema[y][x] === 1) { // Tuile
             push();
-            translate(this.tileWidth * (x - this.minX), this.tileWidth * (y - this.minY));
+            translate(this.tileWidth * x, this.tileWidth * y);
             if (!this.data[y][x]) {
               fill(255, 255, 255, 75);
               stroke(255);
@@ -92,13 +73,14 @@ class Grid {
               this.data[y][x].draw(this.tileWidth);
             }
             pop();
-          } else if (this.schema[y][x] === 2) { // Condition
-            push();
-            translate(this.tileWidth * (x - this.minX), this.tileWidth * (y - this.minY));
-            this.data[y][x].draw(this.tileWidth);
-            pop();
           }
         }
+      }
+      for (let condition of this.conditions) {
+        push();
+        translate(this.tileWidth * condition.x, this.tileWidth * condition.y);
+        condition.draw(this.tileWidth);
+        pop();
       }
       pop();
     }
@@ -142,54 +124,34 @@ class Grid {
     }
   
     checkConditions() {
-      for (let y = 0; y < this.data.length; y++) {
-        for (let x = 0; x < this.data[y].length; x++) {
-          if (this.schema[y][x] !== 2) continue;
-          for (let c of this.data[y][x].conditions) {
-            let _x = x,
-              _y = y;
-            if (c.p == Tile.POINTS.TL || c.p == Tile.POINTS.TR) _y--; // HAUT
-            else if (c.p == Tile.POINTS.BL || c.p == Tile.POINTS.BR) _y++; // BAS
-            else if (c.p == Tile.POINTS.LT || c.p == Tile.POINTS.LB) _x--; // GAUCHE
-            else if (c.p == Tile.POINTS.RB || c.p == Tile.POINTS.RT) _x++; // DROITE
-            let path = this.getPathFrom(_x, _y, Tile.getFacingPoint(c.p));
-            if (path.length === 0) return false;
-  
-            if (c.c === Condition.TYPES.KIOSK) {
-              let p = path.filter(x => x.spec === Tile.SPEC.KIOSK);
-              if (p.length === 0) return false;
-            } else if (c.c === Condition.TYPES.YINYANG) {
-              let p = path.filter(x => x.spec === Tile.SPEC.YINYANG);
-              if (p.length === 0) return false;
-            } else if (c.c === Condition.TYPES.NUMBER) {
-              if (path.length - 1 != c.arg) return false;
-            } else if (c.c === Condition.TYPES.LINK) {
-              let end = path[path.length - 1];
-              _x = path[path.length - 2].x;
-              _y = path[path.length - 2].y;
-              let facing = Tile.getFacingPoint(end.point);
-  
-              if (end.point == Tile.POINTS.TL || end.point == Tile.POINTS.TR) _y--; // HAUT
-              else if (end.point == Tile.POINTS.BL || end.point == Tile.POINTS.BR) _y++; // BAS
-              else if (end.point == Tile.POINTS.LT || end.point == Tile.POINTS.LB) _x--; // GAUCHE
-              else if (end.point == Tile.POINTS.RB || end.point == Tile.POINTS.RT) _x++; // DROITE
-  
-              let found = false;
-              if (_y >= 0 && _y < this.data.length && _x >= 0 && _x < this.data[0].length && this.schema[_y][_x] === 2 && this.data[_y][_x]) {
-                for (let c2 of this.data[_y][_x].conditions) {
-                  if (c2.p === facing && c2.c === c.c && c2.arg === c.arg) {
-                    found = true;
-                  }
-                }
-                if (!found) return false;
-              } else {
-                return false;
-              }
-            } else if (c.c === Condition.TYPES.BRIDGE) {
-              let p = path.filter(x => x.spec === Tile.SPEC.BRIDGE);
-              if (p.length !== c.arg) return false;
+      for (let c of this.conditions) {
+        let path = this.getPathFrom(c.x, c.y, c.point);
+        if (path.length === 0) return false;
+
+        if (c.type === Condition.TYPES.KIOSK) {
+          let p = path.filter(x => x.spec === Tile.SPEC.KIOSK);
+          if (p.length === 0) return false;
+        } else if (c.type === Condition.TYPES.YINYANG) {
+          let p = path.filter(x => x.spec === Tile.SPEC.YINYANG);
+          if (p.length === 0) return false;
+        } else if (c.type === Condition.TYPES.NUMBER) {
+          if (path.length - 1 != c.arg) return false;
+        } else if (c.type === Condition.TYPES.LINK) {
+          let end = path[path.length - 1];
+          let _x = path[path.length - 2].x;
+          let _y = path[path.length - 2].y;
+
+          let found;
+          for (let c2 of this.conditions) {
+            if (c2.type === Condition.TYPES.LINK && c2.arg === c.arg && c2.x === _x && c2.y === _y) {
+              found = true;
+              break;
             }
           }
+          if (!found) return false;
+        } else if (c.c === Condition.TYPES.BRIDGE) {
+          let p = path.filter(x => x.spec === Tile.SPEC.BRIDGE);
+          if (p.length !== c.arg) return false;
         }
       }
       return true;

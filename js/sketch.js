@@ -40,16 +40,81 @@ function loadLevel(n) {
     lt: Tile.POINTS.LT,
   };
   for (let c of levels[n].conditions) {
-    let condition;
-    if (grid.data[c.y][c.x]) {
-      condition = grid.data[c.y][c.x];
-    } else {
-      condition = new Condition();
+    grid.addCondition(new Condition(c.x, c.y, Tile.POINTS[c.point.toUpperCase()], Condition.TYPES[c.type.toUpperCase()], c.arg));
+  }
+}
+
+function rewrite() {
+  for (let level of levels) {
+    // Change conditions tiles to empty tiles and compute new grid limits
+    let minX = Infinity, maxX = 0;
+    let minY = Infinity, maxY = 0;
+    for (let y = 0; y < level.grid.length; y++) {
+      for (let x = 0; x < level.grid[0].length; x++) {
+        if (level.grid[y][x] === 1) {
+          if (x < minX) minX = x;
+          if (x > maxX) maxX = x;
+          if (y < minY) minY = y;
+          if (y > maxY) maxY = y;
+        }
+        if (level.grid[y][x] === 2) {
+          level.grid[y][x] = 0;
+        }
+      }
     }
 
-    condition.addCondition(types[c.type], points[c.point], c.arg);
-    grid.setCondition(c.x, c.y, condition);
+    // Cut out off limits tiles
+    if (maxY < level.grid.length - 1) level.grid.splice(maxY + 1, level.grid.length - maxY);
+    if (minY > 0) level.grid.splice(0, minY);
+
+    if (maxX < level.grid[0].length - 1)
+      for (let y = 0; y < level.grid.length; y++)
+        level.grid[y].splice(maxX + 1, level.grid[y].length - maxX);
+    if (minX > 0)
+      for (let y = 0; y < level.grid.length; y++)
+        level.grid[y].splice(0, minX);
+
+    // Rewrite conditions
+    for (let condition of level.conditions) {
+      condition.x -= minX;
+      condition.y -= minY;
+      switch (condition.point) {
+        case 'tl':
+          condition.point = 'bl';
+          condition.y--;
+          break;
+        case 'tr':
+          condition.point = 'br';
+          condition.y--;
+          break;
+        case 'rt':
+          condition.point = 'lt';
+          condition.x++;
+          break;
+        case 'rb':
+          condition.point = 'lb';
+          condition.x++;
+          break;
+        case 'br':
+          condition.point = 'tr';
+          condition.y++;
+          break;
+        case 'bl':
+          condition.point = 'tl';
+          condition.y++;
+          break;
+        case 'lb':
+          condition.point = 'rb';
+          condition.x--;
+          break;
+        case 'lt':
+          condition.point = 'rt';
+          condition.x--;
+          break;
+      }
+    }
   }
+  console.log(JSON.stringify(levels));
 }
 
 function setup() {
@@ -62,7 +127,6 @@ function setup() {
   win = false;
 
   createCanvas(800, 800);
-  console.log(document.getElementById('game'));
   document.getElementById('game').appendChild(canvas);
 
   hand = [];
@@ -203,6 +267,8 @@ function mousePressed() {
 function mouseMoved() {
   let pointerCursor = false;
   
+  if (!hand) return;
+
   for (let i = 0; i < hand.length; i++) {
     let x = (width / 64) * (i + 1) + (width / 8) * i;
     let y = height * 345 / 400;

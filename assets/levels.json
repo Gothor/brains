@@ -1,815 +1,742 @@
 [
-    {
+  {
       "id": 1,
       "grid": [
-        [0, 2],
-        [2, 1],
-        [0, 2]
+          [1]
       ],
       "conditions": [
-        {"x": 1, "y": 0, "point": "br", "type": "link", "arg": 1},
-        {"x": 1, "y": 2, "point": "tr", "type": "link", "arg": 1},
-        {"x": 0, "y": 1, "point": "rt", "type": "bridge", "arg": 1}
+          {"x": 0, "y": 0, "point": "tr", "type": "link", "arg": 1},
+          {"x": 0, "y": 0, "point": "br", "type": "link", "arg": 1},
+          {"x": 0, "y": 0, "point": "lt", "type": "bridge", "arg": 1}
       ]
-    },
-    {
+  },
+  {
       "id": 2,
       "grid": [
-        [0, 2, 0],
-        [2, 1, 2]
+          [1]
       ],
       "conditions": [
-        {"x": 1, "y": 0, "point": "br", "type": "link", "arg": 1},
-        {"x": 0, "y": 1, "point": "rt", "type": "link", "arg": 1},
-        {"x": 2, "y": 1, "point": "lt", "type": "kiosk", "arg": 1}
+          {"x": 0, "y": 0, "point": "tr", "type": "link", "arg": 1},
+          {"x": 0, "y": 0, "point": "lt", "type": "link", "arg": 1},
+          {"x": 0, "y": 0, "point": "rt", "type": "kiosk", "arg": 1}
       ]
-    },
-    {
+  },
+  {
       "id": 3,
       "grid": [
-        [2, 1, 2],
-        [0, 1, 2]
+          [1],
+          [1]
       ],
       "conditions": [
-        {"x": 2, "y": 0, "point": "lb", "type": "number", "arg": 2},
-        {"x": 0, "y": 0, "point": "rt", "type": "kiosk", "arg": 1},
-        {"x": 2, "y": 1, "point": "lb", "type": "kiosk", "arg": 1}
+          {"x": 0, "y": 0, "point": "rb", "type": "number", "arg": 2},
+          {"x": 0, "y": 0, "point": "lt", "type": "kiosk", "arg": 1},
+          {"x": 0, "y": 1, "point": "rb", "type": "kiosk", "arg": 1}
       ]
-    },
-    {
+  },
+  {
       "id": 4,
       "grid": [
-        [0, 2, 0],
-        [0, 1, 2],
-        [2, 1, 2]
+          [1],
+          [1]
       ],
       "conditions": [
-        {"x": 1, "y": 0, "point": "br", "type": "number", "arg": 3},
-        {"x": 2, "y": 1, "point": "lb", "type": "number", "arg": 3},
-        {"x": 2, "y": 2, "point": "lt", "type": "number", "arg": 1},
-        {"x": 0, "y": 2, "point": "rb", "type": "yinyang", "arg": 1}
+          {"x": 0, "y": 0, "point": "tr", "type": "number", "arg": 3},
+          {"x": 0, "y": 0, "point": "rb", "type": "number", "arg": 3},
+          {"x": 0, "y": 1, "point": "rt", "type": "number", "arg": 1},
+          {"x": 0, "y": 1, "point": "lb", "type": "yinyang", "arg": 1}
       ]
-    },
-    {
+  },
+  {
       "id": 5,
       "grid": [
-        [2, 1, 2],
-        [0, 1, 2],
-        [0, 2, 0]
+          [1],
+          [1]
       ],
       "conditions": [
-        {"x": 0, "y": 0, "point": "rb", "type": "number", "arg": 2},
-        {"x": 2, "y": 0, "point": "lb", "type": "bridge", "arg": 1},
-        {"x": 2, "y": 1, "point": "lt", "type": "bridge", "arg": 1},
-        {"x": 1, "y": 2, "point": "tr", "type": "number", "arg": 2}
+          {"x": 0, "y": 0, "point": "lb", "type": "number", "arg": 2},
+          {"x": 0, "y": 0, "point": "rb", "type": "bridge", "arg": 1},
+          {"x": 0, "y": 1, "point": "rt", "type": "bridge", "arg": 1},
+          {"x": 0, "y": 1, "point": "br", "type": "number", "arg": 2}
       ]
-    },
-    {
+  },
+  {
       "id": 6,
       "grid": [
-        [0, 2, 0],
-        [2, 1, 2],
-        [0, 1, 2]
+          [1],
+          [1]
       ],
       "conditions": [
-        {"x": 1, "y": 0, "point": "bl", "type": "link", "arg": 1},
-        {"x": 0, "y": 1, "point": "rb", "type": "link", "arg": 1},
-        {"x": 2, "y": 1, "point": "lb", "type": "bridge", "arg": 1},
-        {"x": 2, "y": 2, "point": "lt", "type": "kiosk", "arg": 1}
+          {"x": 0, "y": 0, "point": "tl", "type": "link", "arg": 1},
+          {"x": 0, "y": 0, "point": "lb", "type": "link", "arg": 1},
+          {"x": 0, "y": 0, "point": "rb", "type": "bridge", "arg": 1},
+          {"x": 0, "y": 1, "point": "rt", "type": "kiosk", "arg": 1}
       ]
-    },
-    {
+  },
+  {
       "id": 7,
       "grid": [
-        [0, 2, 0],
-        [2, 1, 2],
-        [0, 1, 2]
+          [1],
+          [1]
       ],
       "conditions": [
-        {"x": 1, "y": 0, "point": "br", "type": "link", "arg": 1},
-        {"x": 2, "y": 1, "point": "lb", "type": "link", "arg": 1},
-        {"x": 0, "y": 1, "point": "rt", "type": "link", "arg": 2},
-        {"x": 2, "y": 2, "point": "lt", "type": "link", "arg": 2},
-        {"x": 2, "y": 1, "point": "lt", "type": "link", "arg": 3},
-        {"x": 2, "y": 2, "point": "lb", "type": "link", "arg": 3}
+          {"x": 0, "y": 0, "point": "tr", "type": "link", "arg": 1},
+          {"x": 0, "y": 0, "point": "rb", "type": "link", "arg": 1},
+          {"x": 0, "y": 0, "point": "lt", "type": "link", "arg": 2},
+          {"x": 0, "y": 1, "point": "rt", "type": "link", "arg": 2},
+          {"x": 0, "y": 0, "point": "rt", "type": "link", "arg": 3},
+          {"x": 0, "y": 1, "point": "rb", "type": "link", "arg": 3}
       ]
-    },
-    {
+  },
+  {
       "id": 8,
       "grid": [
-        [0, 2, 0],
-        [2, 1, 0],
-        [2, 1, 2]
+          [1],
+          [1]
       ],
       "conditions": [
-        {"x": 1, "y": 0, "point": "bl", "type": "number", "arg": 2},
-        {"x": 0, "y": 1, "point": "rb", "type": "number", "arg": 2},
-        {"x": 0, "y": 2, "point": "rb", "type": "number", "arg": 2},
-        {"x": 2, "y": 2, "point": "lt", "type": "number", "arg": 2}
+          {"x": 0, "y": 0, "point": "tl", "type": "number", "arg": 2},
+          {"x": 0, "y": 0, "point": "lb", "type": "number", "arg": 2},
+          {"x": 0, "y": 1, "point": "lb", "type": "number", "arg": 2},
+          {"x": 0, "y": 1, "point": "rt", "type": "number", "arg": 2}
       ]
-    },
-    {
+  },
+  {
       "id": 9,
       "grid": [
-        [0, 2, 0],
-        [2, 1, 2],
-        [2, 1, 0]
+          [1],
+          [1]
       ],
       "conditions": [
-        {"x": 1, "y": 0, "point": "bl", "type": "number", "arg": 3},
-        {"x": 0, "y": 1, "point": "rt", "type": "bridge", "arg": 1},
-        {"x": 2, "y": 1, "point": "lt", "type": "link", "arg": 1},
-        {"x": 2, "y": 1, "point": "lb", "type": "link", "arg": 1},
-        {"x": 0, "y": 2, "point": "rb", "type": "bridge", "arg": 1}
+          {"x": 0, "y": 0, "point": "tl", "type": "number", "arg": 3},
+          {"x": 0, "y": 0, "point": "lt", "type": "bridge", "arg": 1},
+          {"x": 0, "y": 0, "point": "rt", "type": "link", "arg": 1},
+          {"x": 0, "y": 0, "point": "rb", "type": "link", "arg": 1},
+          {"x": 0, "y": 1, "point": "lb", "type": "bridge", "arg": 1}
       ]
-    },
-    {
+  },
+  {
       "id": 10,
       "grid": [
-        [2, 1, 2],
-        [2, 1, 2]
+          [1],
+          [1]
       ],
       "conditions": [
-        {"x": 0, "y": 0, "point": "rt", "type": "bridge", "arg": 1},
-        {"x": 0, "y": 0, "point": "rb", "type": "bridge", "arg": 1},
-        {"x": 0, "y": 1, "point": "rt", "type": "bridge", "arg": 1},
-        {"x": 2, "y": 0, "point": "lt", "type": "link", "arg": 1},
-        {"x": 2, "y": 1, "point": "lb", "type": "link", "arg": 1}
+          {"x": 0, "y": 0, "point": "lt", "type": "bridge", "arg": 1},
+          {"x": 0, "y": 0, "point": "lb", "type": "bridge", "arg": 1},
+          {"x": 0, "y": 1, "point": "lt", "type": "bridge", "arg": 1},
+          {"x": 0, "y": 0, "point": "rt", "type": "link", "arg": 1},
+          {"x": 0, "y": 1, "point": "rb", "type": "link", "arg": 1}
       ]
-    },
-    {
+  },
+  {
       "id": 11,
       "grid": [
-        [0, 1, 2],
-        [1, 1, 2],
-        [2, 2, 0]
+          [0, 1],
+          [1, 1]
       ],
       "conditions": [
-        {"x": 2, "y": 0, "point": "lt", "type": "kiosk", "arg": 1},
-        {"x": 2, "y": 0, "point": "lb", "type": "kiosk", "arg": 1},
-        {"x": 0, "y": 2, "point": "tr", "type": "link", "arg": 1},
-        {"x": 2, "y": 1, "point": "lb", "type": "link", "arg": 1},
-        {"x": 1, "y": 2, "point": "tr", "type": "yinyang", "arg": 1}
+          {"x": 1, "y": 0, "point": "rt", "type": "kiosk", "arg": 1},
+          {"x": 1, "y": 0, "point": "rb", "type": "kiosk", "arg": 1},
+          {"x": 0, "y": 1, "point": "br", "type": "link", "arg": 1},
+          {"x": 1, "y": 1, "point": "rb", "type": "link", "arg": 1},
+          {"x": 1, "y": 1, "point": "br", "type": "yinyang", "arg": 1}
       ]
-    },
-    {
+  },
+  {
       "id": 12,
       "grid": [
-        [0, 0, 2, 2],
-        [2, 1, 1, 1],
-        [0, 2, 2, 0]
+          [1, 1, 1]
       ],
       "conditions": [
-        {"x": 2, "y": 0, "point": "bl", "type": "number", "arg": 5},
-        {"x": 2, "y": 2, "point": "tl", "type": "number", "arg": 1},
-        {"x": 3, "y": 0, "point": "bl", "type": "bridge", "arg": 1},
-        {"x": 0, "y": 1, "point": "rt", "type": "link", "arg": 1},
-        {"x": 1, "y": 2, "point": "tr", "type": "link", "arg": 1}
+          {"x": 1, "y": 0, "point": "tl", "type": "number", "arg": 5},
+          {"x": 1, "y": 0, "point": "bl", "type": "number", "arg": 1},
+          {"x": 2, "y": 0, "point": "tl", "type": "bridge", "arg": 1},
+          {"x": 0, "y": 0, "point": "lt", "type": "link", "arg": 1},
+          {"x": 0, "y": 0, "point": "br", "type": "link", "arg": 1}
       ]
-    },
-    {
+  },
+  {
       "id": 13,
       "grid": [
-        [0, 0, 2, 0],
-        [0, 2, 1, 2],
-        [2, 1, 1, 2],
-        [0, 2, 0, 0]
+          [0, 1],
+          [1, 1]
       ],
       "conditions": [
-        {"x": 2, "y": 0, "point": "br", "type": "link", "arg": 1},
-        {"x": 1, "y": 3, "point": "tl", "type": "link", "arg": 1},
-        {"x": 1, "y": 1, "point": "rb", "type": "link", "arg": 2},
-        {"x": 3, "y": 1, "point": "lb", "type": "link", "arg": 2},
-        {"x": 1, "y": 1, "point": "bl", "type": "link", "arg": 3},
-        {"x": 3, "y": 2, "point": "lt", "type": "link", "arg": 3},
-        {"x": 0, "y": 2, "point": "rt", "type": "link", "arg": 4},
-        {"x": 1, "y": 3, "point": "tr", "type": "link", "arg": 4}
+          {"x": 1, "y": 0, "point": "tr", "type": "link", "arg": 1},
+          {"x": 0, "y": 1, "point": "bl", "type": "link", "arg": 1},
+          {"x": 1, "y": 0, "point": "lb", "type": "link", "arg": 2},
+          {"x": 1, "y": 0, "point": "rb", "type": "link", "arg": 2},
+          {"x": 0, "y": 1, "point": "tl", "type": "link", "arg": 3},
+          {"x": 1, "y": 1, "point": "rt", "type": "link", "arg": 3},
+          {"x": 0, "y": 1, "point": "lt", "type": "link", "arg": 4},
+          {"x": 0, "y": 1, "point": "br", "type": "link", "arg": 4}
       ]
-    },
-    {
+  },
+  {
       "id": 14,
       "grid": [
-        [0, 2, 0],
-        [1, 1, 1],
-        [2, 0, 2]
+          [1, 1, 1]
       ],
       "conditions": [
-        {"x": 1, "y": 0, "point": "bl", "type": "bridge", "arg": 1},
-        {"x": 1, "y": 0, "point": "br", "type": "bridge", "arg": 1},
-        {"x": 0, "y": 2, "point": "tr", "type": "kiosk", "arg": 1},
-        {"x": 2, "y": 2, "point": "tr", "type": "kiosk", "arg": 1}
+          {"x": 1, "y": 0, "point": "tl", "type": "bridge", "arg": 1},
+          {"x": 1, "y": 0, "point": "tr", "type": "bridge", "arg": 1},
+          {"x": 0, "y": 0, "point": "br", "type": "kiosk", "arg": 1},
+          {"x": 2, "y": 0, "point": "br", "type": "kiosk", "arg": 1}
       ]
-    },
-    {
+  },
+  {
       "id": 15,
       "grid": [
-        [0, 2, 0],
-        [0, 1, 2],
-        [2, 1, 1]
+          [1, 0],
+          [1, 1]
       ],
       "conditions": [
-        {"x": 1, "y": 0, "point": "br", "type": "bridge", "arg": 2},
-        {"x": 0, "y": 2, "point": "rt", "type": "bridge", "arg": 2},
-        {"x": 2, "y": 1, "point": "lt", "type": "link", "arg": 1},
-        {"x": 2, "y": 1, "point": "bl", "type": "link", "arg": 1}
+          {"x": 0, "y": 0, "point": "tr", "type": "bridge", "arg": 2},
+          {"x": 0, "y": 1, "point": "lt", "type": "bridge", "arg": 2},
+          {"x": 0, "y": 0, "point": "rt", "type": "link", "arg": 1},
+          {"x": 1, "y": 1, "point": "tl", "type": "link", "arg": 1}
       ]
-    },
-    {
+  },
+  {
       "id": 16,
       "grid": [
-        [0, 2, 2, 2, 0],
-        [2, 1, 1, 1, 2],
-        [0, 0, 2, 0, 0]
+          [1, 1, 1]
       ],
       "conditions": [
-        {"x": 1, "y": 0, "point": "br", "type": "yinyang", "arg": 1},
-        {"x": 4, "y": 1, "point": "lt", "type": "yinyang", "arg": 1},
-        {"x": 2, "y": 0, "point": "bl", "type": "link", "arg": 1},
-        {"x": 0, "y": 1, "point": "rt", "type": "link", "arg": 1},
-        {"x": 3, "y": 0, "point": "bl", "type": "link", "arg": 2},
-        {"x": 2, "y": 2, "point": "tl", "type": "link", "arg": 2}
+          {"x": 0, "y": 0, "point": "tr", "type": "yinyang", "arg": 1},
+          {"x": 2, "y": 0, "point": "rt", "type": "yinyang", "arg": 1},
+          {"x": 1, "y": 0, "point": "tl", "type": "link", "arg": 1},
+          {"x": 0, "y": 0, "point": "lt", "type": "link", "arg": 1},
+          {"x": 2, "y": 0, "point": "tl", "type": "link", "arg": 2},
+          {"x": 1, "y": 0, "point": "bl", "type": "link", "arg": 2}
       ]
-    },
-    {
+  },
+  {
       "id": 17,
       "grid": [
-        [2, 2, 2],
-        [1, 1, 1],
-        [2, 2, 2]
+          [1, 1, 1]
       ],
       "conditions": [
-        {"x": 0, "y": 0, "point": "bl", "type": "link", "arg": 1},
-        {"x": 1, "y": 2, "point": "tl", "type": "link", "arg": 1},
-        {"x": 1, "y": 0, "point": "bl", "type": "link", "arg": 2},
-        {"x": 2, "y": 0, "point": "br", "type": "link", "arg": 2},
-        {"x": 1, "y": 0, "point": "br", "type": "link", "arg": 3},
-        {"x": 0, "y": 2, "point": "tl", "type": "link", "arg": 3},
-        {"x": 1, "y": 2, "point": "tr", "type": "link", "arg": 4},
-        {"x": 2, "y": 2, "point": "tr", "type": "link", "arg": 4}
+          {"x": 0, "y": 0, "point": "tl", "type": "link", "arg": 1},
+          {"x": 1, "y": 0, "point": "bl", "type": "link", "arg": 1},
+          {"x": 1, "y": 0, "point": "tl", "type": "link", "arg": 2},
+          {"x": 2, "y": 0, "point": "tr", "type": "link", "arg": 2},
+          {"x": 1, "y": 0, "point": "tr", "type": "link", "arg": 3},
+          {"x": 0, "y": 0, "point": "bl", "type": "link", "arg": 3},
+          {"x": 1, "y": 0, "point": "br", "type": "link", "arg": 4},
+          {"x": 2, "y": 0, "point": "br", "type": "link", "arg": 4}
       ]
-    },
-    {
+  },
+  {
       "id": 18,
       "grid": [
-        [2, 1, 1],
-        [2, 1, 2]
+          [1, 1],
+          [1, 0]
       ],
       "conditions": [
-        {"x": 0, "y": 0, "point": "rt", "type": "number", "arg": 2},
-        {"x": 2, "y": 1, "point": "tl", "type": "number", "arg": 2},
-        {"x": 0, "y": 1, "point": "rb", "type": "yinyang", "arg": 1},
-        {"x": 2, "y": 1, "point": "lt", "type": "kiosk", "arg": 1}
+          {"x": 0, "y": 0, "point": "lt", "type": "number", "arg": 2},
+          {"x": 1, "y": 0, "point": "bl", "type": "number", "arg": 2},
+          {"x": 0, "y": 1, "point": "lb", "type": "yinyang", "arg": 1},
+          {"x": 0, "y": 1, "point": "rt", "type": "kiosk", "arg": 1}
       ]
-    },
-    {
+  },
+  {
       "id": 19,
       "grid": [
-        [0, 2, 2, 2],
-        [2, 1, 1, 1],
-        [0, 0, 2, 2]
+          [1, 1, 1]
       ],
       "conditions": [
-        {"x": 1, "y": 0, "point": "br", "type": "link", "arg": 1},
-        {"x": 0, "y": 1, "point": "rb", "type": "link", "arg": 1},
-        {"x": 2, "y": 0, "point": "br", "type": "link", "arg": 2},
-        {"x": 2, "y": 2, "point": "tl", "type": "link", "arg": 2},
-        {"x": 3, "y": 0, "point": "br", "type": "link", "arg": 3},
-        {"x": 3, "y": 2, "point": "tl", "type": "link", "arg": 3}
+          {"x": 0, "y": 0, "point": "tr", "type": "link", "arg": 1},
+          {"x": 0, "y": 0, "point": "lb", "type": "link", "arg": 1},
+          {"x": 1, "y": 0, "point": "tr", "type": "link", "arg": 2},
+          {"x": 1, "y": 0, "point": "bl", "type": "link", "arg": 2},
+          {"x": 2, "y": 0, "point": "tr", "type": "link", "arg": 3},
+          {"x": 2, "y": 0, "point": "bl", "type": "link", "arg": 3}
       ]
-    },
-    {
+  },
+  {
       "id": 20,
       "grid": [
-        [0, 1, 2],
-        [1, 1, 2],
-        [2, 2, 0]
+          [0, 1],
+          [1, 1]
       ],
       "conditions": [
-        {"x": 2, "y": 0, "point": "lb", "type": "bridge", "arg": 1},
-        {"x": 0, "y": 2, "point": "tr", "type": "bridge", "arg": 1},
-        {"x": 2, "y": 1, "point": "lb", "type": "bridge", "arg": 2},
-        {"x": 1, "y": 2, "point": "tr", "type": "number", "arg": 4}
+          {"x": 1, "y": 0, "point": "rb", "type": "bridge", "arg": 1},
+          {"x": 0, "y": 1, "point": "br", "type": "bridge", "arg": 1},
+          {"x": 1, "y": 1, "point": "rb", "type": "bridge", "arg": 2},
+          {"x": 1, "y": 1, "point": "br", "type": "number", "arg": 4}
       ]
-    },
-    {
+  },
+  {
       "id": 21,
       "grid": [
-        [0, 2, 0, 0],
-        [0, 1, 2, 0],
-        [2, 1, 1, 1]
+          [1, 0, 0],
+          [1, 1, 1]
       ],
       "conditions": [
-        {"x": 0, "y": 2, "point": "rt", "type": "bridge", "arg": 1},
-        {"x": 1, "y": 0, "point": "br", "type": "bridge", "arg": 2},
-        {"x": 2, "y": 1, "point": "lt", "type": "bridge", "arg": 2},
-        {"x": 2, "y": 1, "point": "bl", "type": "number", "arg": 2},
-        {"x": 2, "y": 1, "point": "br", "type": "number", "arg": 2}
+          {"x": 0, "y": 1, "point": "lt", "type": "bridge", "arg": 1},
+          {"x": 0, "y": 0, "point": "tr", "type": "bridge", "arg": 2},
+          {"x": 0, "y": 0, "point": "rt", "type": "bridge", "arg": 2},
+          {"x": 1, "y": 1, "point": "tl", "type": "number", "arg": 2},
+          {"x": 1, "y": 1, "point": "tr", "type": "number", "arg": 2}
       ]
-    },
-    {
+  },
+  {
       "id": 22,
       "grid": [
-        [2, 1, 2],
-        [1, 1, 1],
-        [2, 0, 2]
+          [0, 1, 0],
+          [1, 1, 1]
       ],
       "conditions": [
-        {"x": 0, "y": 0, "point": "bl", "type": "link", "arg": 1},
-        {"x": 2, "y": 2, "point": "tr", "type": "link", "arg": 1},
-        {"x": 0, "y": 0, "point": "rb", "type": "link", "arg": 2},
-        {"x": 0, "y": 2, "point": "tl", "type": "link", "arg": 2},
-        {"x": 2, "y": 0, "point": "lb", "type": "link", "arg": 3},
-        {"x": 2, "y": 0, "point": "br", "type": "link", "arg": 3}
+          {"x": 0, "y": 1, "point": "tl", "type": "link", "arg": 1},
+          {"x": 2, "y": 1, "point": "br", "type": "link", "arg": 1},
+          {"x": 1, "y": 0, "point": "lb", "type": "link", "arg": 2},
+          {"x": 0, "y": 1, "point": "bl", "type": "link", "arg": 2},
+          {"x": 1, "y": 0, "point": "rb", "type": "link", "arg": 3},
+          {"x": 2, "y": 1, "point": "tr", "type": "link", "arg": 3}
       ]
-    },
-    {
+  },
+  {
       "id": 23,
       "grid": [
-        [2, 2, 1, 2],
-        [1, 1, 1, 2],
-        [2, 2, 2, 0]
+          [0, 0, 1],
+          [1, 1, 1]
       ],
       "conditions": [
-        {"x": 1, "y": 0, "point": "bl", "type": "link", "arg": 1},
-        {"x": 3, "y": 1, "point": "lb", "type": "link", "arg": 1},
-        {"x": 0, "y": 0, "point": "bl", "type": "link", "arg": 2},
-        {"x": 1, "y": 2, "point": "tr", "type": "link", "arg": 2},
-        {"x": 3, "y": 0, "point": "lb", "type": "link", "arg": 3},
-        {"x": 2, "y": 2, "point": "tr", "type": "link", "arg": 3},
-        {"x": 3, "y": 0, "point": "lt", "type": "number", "arg": 3},
-        {"x": 0, "y": 2, "point": "tl", "type": "number", "arg": 2}
+          {"x": 1, "y": 1, "point": "tl", "type": "link", "arg": 1},
+          {"x": 2, "y": 1, "point": "rb", "type": "link", "arg": 1},
+          {"x": 0, "y": 1, "point": "tl", "type": "link", "arg": 2},
+          {"x": 1, "y": 1, "point": "br", "type": "link", "arg": 2},
+          {"x": 2, "y": 0, "point": "rb", "type": "link", "arg": 3},
+          {"x": 2, "y": 1, "point": "br", "type": "link", "arg": 3},
+          {"x": 2, "y": 0, "point": "rt", "type": "number", "arg": 3},
+          {"x": 0, "y": 1, "point": "bl", "type": "number", "arg": 2}
       ]
-    },
-    {
+  },
+  {
       "id": 24,
       "grid": [
-        [0, 2, 2, 0],
-        [2, 1, 1, 2],
-        [2, 1, 1, 0],
-        [0, 2, 0, 0]
+          [1, 1],
+          [1, 1]
       ],
       "conditions": [
-        {"x": 3, "y": 1, "point": "lt", "type": "link", "arg": 1},
-        {"x": 1, "y": 3, "point": "tr", "type": "link", "arg": 1},
-        {"x": 1, "y": 0, "point": "br", "type": "bridge", "arg": 2},
-        {"x": 2, "y": 0, "point": "br", "type": "bridge", "arg": 2},
-        {"x": 0, "y": 1, "point": "rb", "type": "bridge", "arg": 2},
-        {"x": 0, "y": 2, "point": "rb", "type": "bridge", "arg": 2}
+          {"x": 1, "y": 0, "point": "rt", "type": "link", "arg": 1},
+          {"x": 0, "y": 1, "point": "br", "type": "link", "arg": 1},
+          {"x": 0, "y": 0, "point": "tr", "type": "bridge", "arg": 2},
+          {"x": 1, "y": 0, "point": "tr", "type": "bridge", "arg": 2},
+          {"x": 0, "y": 0, "point": "lb", "type": "bridge", "arg": 2},
+          {"x": 0, "y": 1, "point": "lb", "type": "bridge", "arg": 2}
       ]
-    },
-    {
+  },
+  {
       "id": 25,
       "grid": [
-        [2, 2, 0],
-        [1, 1, 2],
-        [2, 1, 1],
-        [0, 0, 2]
+          [1, 1, 0],
+          [0, 1, 1]
       ],
       "conditions": [
-        {"x": 0, "y": 2, "point": "tl", "type": "yinyang", "arg": 1},
-        {"x": 0, "y": 2, "point": "rb", "type": "yinyang", "arg": 1},
-        {"x": 2, "y": 3, "point": "tr", "type": "bridge", "arg": 1},
-        {"x": 0, "y": 0, "point": "bl", "type": "number", "arg": 2},
-        {"x": 1, "y": 0, "point": "br", "type": "number", "arg": 2},
-        {"x": 2, "y": 1, "point": "lt", "type": "number", "arg": 2},
-        {"x": 0, "y": 2, "point": "rt", "type": "number", "arg": 2}
+          {"x": 0, "y": 0, "point": "bl", "type": "yinyang", "arg": 1},
+          {"x": 1, "y": 1, "point": "lb", "type": "yinyang", "arg": 1},
+          {"x": 2, "y": 1, "point": "br", "type": "bridge", "arg": 1},
+          {"x": 0, "y": 0, "point": "tl", "type": "number", "arg": 2},
+          {"x": 1, "y": 0, "point": "tr", "type": "number", "arg": 2},
+          {"x": 1, "y": 0, "point": "rt", "type": "number", "arg": 2},
+          {"x": 1, "y": 1, "point": "lt", "type": "number", "arg": 2}
       ]
-    },
-    {
+  },
+  {
       "id": 26,
       "grid": [
-        [2, 2, 0],
-        [1, 1, 0],
-        [0, 1, 1],
-        [0, 2, 2]
+          [1, 1, 0],
+          [0, 1, 1]
       ],
       "conditions": [
-        {"x": 0, "y": 0, "point": "br", "type": "bridge", "arg": 1},
-        {"x": 1, "y": 0, "point": "bl", "type": "bridge", "arg": 1},
-        {"x": 1, "y": 0, "point": "br", "type": "bridge", "arg": 1},
-        {"x": 1, "y": 3, "point": "tr", "type": "number", "arg": 4},
-        {"x": 2, "y": 3, "point": "tl", "type": "number", "arg": 3},
-        {"x": 1, "y": 3, "point": "tl", "type": "kiosk", "arg": 1}
+          {"x": 0, "y": 0, "point": "tr", "type": "bridge", "arg": 1},
+          {"x": 1, "y": 0, "point": "tl", "type": "bridge", "arg": 1},
+          {"x": 1, "y": 0, "point": "tr", "type": "bridge", "arg": 1},
+          {"x": 1, "y": 1, "point": "br", "type": "number", "arg": 4},
+          {"x": 2, "y": 1, "point": "bl", "type": "number", "arg": 3},
+          {"x": 1, "y": 1, "point": "bl", "type": "kiosk", "arg": 1}
       ]
-    },
-    {
+  },
+  {
       "id": 27,
       "grid": [
-        [2, 2, 0, 0],
-        [1, 1, 1, 2],
-        [2, 2, 1, 0],
-        [0, 0, 2, 0]
+          [1, 1, 1],
+          [0, 0, 1]
       ],
       "conditions": [
-        {"x": 0, "y": 0, "point": "bl", "type": "bridge", "arg": 1},
-        {"x": 1, "y": 0, "point": "br", "type": "bridge", "arg": 1},
-        {"x": 0, "y": 2, "point": "tr", "type": "bridge", "arg": 1},
-        {"x": 1, "y": 2, "point": "tl", "type": "bridge", "arg": 1},
-        {"x": 2, "y": 3, "point": "tl", "type": "bridge", "arg": 1},
-        {"x": 0, "y": 2, "point": "tl", "type": "link", "arg": 1},
-        {"x": 1, "y": 2, "point": "tr", "type": "link", "arg": 1},
-        {"x": 3, "y": 1, "point": "lb", "type": "link", "arg": 2},
-        {"x": 1, "y": 2, "point": "rt", "type": "link", "arg": 2}
+          {"x": 0, "y": 0, "point": "tl", "type": "bridge", "arg": 1},
+          {"x": 1, "y": 0, "point": "tr", "type": "bridge", "arg": 1},
+          {"x": 0, "y": 0, "point": "br", "type": "bridge", "arg": 1},
+          {"x": 1, "y": 0, "point": "bl", "type": "bridge", "arg": 1},
+          {"x": 2, "y": 1, "point": "bl", "type": "bridge", "arg": 1},
+          {"x": 0, "y": 0, "point": "bl", "type": "link", "arg": 1},
+          {"x": 1, "y": 0, "point": "br", "type": "link", "arg": 1},
+          {"x": 2, "y": 0, "point": "rb", "type": "link", "arg": 2},
+          {"x": 2, "y": 1, "point": "lt", "type": "link", "arg": 2}
       ]
-    },
-    {
+  },
+  {
       "id": 28,
       "grid": [
-        [2, 2, 0],
-        [1, 1, 2],
-        [1, 1, 2],
-        [2, 0, 0]
+          [1, 1],
+          [1, 1]
       ],
       "conditions": [
-        {"x": 0, "y": 0, "point": "br", "type": "bridge", "arg": 2},
-        {"x": 2, "y": 1, "point": "lt", "type": "bridge", "arg": 2},
-        {"x": 2, "y": 2, "point": "lt", "type": "bridge", "arg": 2},
-        {"x": 0, "y": 3, "point": "tl", "type": "bridge", "arg": 2},
-        {"x": 0, "y": 0, "point": "bl", "type": "link", "arg": 1},
-        {"x": 0, "y": 3, "point": "tr", "type": "link", "arg": 1},
-        {"x": 1, "y": 0, "point": "br", "type": "link", "arg": 2},
-        {"x": 2, "y": 2, "point": "lb", "type": "link", "arg": 2}
+          {"x": 0, "y": 0, "point": "tr", "type": "bridge", "arg": 2},
+          {"x": 1, "y": 0, "point": "rt", "type": "bridge", "arg": 2},
+          {"x": 1, "y": 1, "point": "rt", "type": "bridge", "arg": 2},
+          {"x": 0, "y": 1, "point": "bl", "type": "bridge", "arg": 2},
+          {"x": 0, "y": 0, "point": "tl", "type": "link", "arg": 1},
+          {"x": 0, "y": 1, "point": "br", "type": "link", "arg": 1},
+          {"x": 1, "y": 0, "point": "tr", "type": "link", "arg": 2},
+          {"x": 1, "y": 1, "point": "rb", "type": "link", "arg": 2}
       ]
-    },
-    {
+  },
+  {
       "id": 29,
       "grid": [
-        [0, 0, 2, 0],
-        [2, 1, 1, 2],
-        [1, 1, 0, 0]
+          [0, 1, 1],
+          [1, 1, 0]
       ],
       "conditions": [
-        {"x": 0, "y": 1, "point": "br", "type": "bridge", "arg": 1},
-        {"x": 2, "y": 0, "point": "bl", "type": "link", "arg": 1},
-        {"x": 3, "y": 1, "point": "lb", "type": "link", "arg": 1},
-        {"x": 0, "y": 1, "point": "rb", "type": "kiosk", "arg": 1},
-        {"x": 0, "y": 1, "point": "rt", "type": "number", "arg": 7}
+          {"x": 0, "y": 1, "point": "tr", "type": "bridge", "arg": 1},
+          {"x": 2, "y": 0, "point": "tl", "type": "link", "arg": 1},
+          {"x": 2, "y": 0, "point": "rb", "type": "link", "arg": 1},
+          {"x": 1, "y": 0, "point": "lb", "type": "kiosk", "arg": 1},
+          {"x": 1, "y": 0, "point": "lt", "type": "number", "arg": 7}
       ]
-    },
-    {
+  },
+  {
       "id": 30,
       "grid": [
-        [0, 0, 1, 2],
-        [2, 1, 1, 1],
-        [0, 2, 0, 2]
+          [0, 1, 0],
+          [1, 1, 1]
       ],
       "conditions": [
-        {"x": 3, "y": 0, "point": "lt", "type": "bridge", "arg": 1},
-        {"x": 3, "y": 0, "point": "lb", "type": "bridge", "arg": 1},
-        {"x": 0, "y": 1, "point": "rt", "type": "bridge", "arg": 2},
-        {"x": 1, "y": 2, "point": "tr", "type": "bridge", "arg": 1},
-        {"x": 3, "y": 2, "point": "tl", "type": "bridge", "arg": 2}
+          {"x": 1, "y": 0, "point": "rt", "type": "bridge", "arg": 1},
+          {"x": 1, "y": 0, "point": "rb", "type": "bridge", "arg": 1},
+          {"x": 0, "y": 1, "point": "lt", "type": "bridge", "arg": 2},
+          {"x": 0, "y": 1, "point": "br", "type": "bridge", "arg": 1},
+          {"x": 2, "y": 1, "point": "bl", "type": "bridge", "arg": 2}
       ]
-    },
-    {
+  },
+  {
       "id": 31,
       "grid": [
-        [0, 2, 2],
-        [2, 1, 1],
-        [0, 1, 1],
-        [0, 0, 2]
+          [1, 1],
+          [1, 1]
       ],
       "conditions": [
-        {"x": 2, "y": 0, "point": "br", "type": "number", "arg": 3},
-        {"x": 0, "y": 1, "point": "rb", "type": "number", "arg": 5},
-        {"x": 2, "y": 3, "point": "tr", "type": "number", "arg": 3},
-        {"x": 1, "y": 0, "point": "br", "type": "kiosk", "arg": 1}
+          {"x": 1, "y": 0, "point": "tr", "type": "number", "arg": 3},
+          {"x": 0, "y": 0, "point": "lb", "type": "number", "arg": 5},
+          {"x": 1, "y": 1, "point": "br", "type": "number", "arg": 3},
+          {"x": 0, "y": 0, "point": "tr", "type": "kiosk", "arg": 1}
       ]
-    },
-    {
+  },
+  {
       "id": 32,
       "grid": [
-        [0, 2, 0, 0],
-        [2, 1, 1, 0],
-        [0, 1, 1, 2],
-        [0, 2, 0, 0]
+          [1, 1],
+          [1, 1]
       ],
       "conditions": [
-        {"x": 3, "y": 2, "point": "lt", "type": "bridge", "arg": 2},
-        {"x": 1, "y": 3, "point": "tr", "type": "kiosk", "arg": 1},
-        {"x": 1, "y": 0, "point": "bl", "type": "yinyang", "arg": 1},
-        {"x": 0, "y": 1, "point": "rt", "type": "number", "arg": 7}
+          {"x": 1, "y": 1, "point": "rt", "type": "bridge", "arg": 2},
+          {"x": 0, "y": 1, "point": "br", "type": "kiosk", "arg": 1},
+          {"x": 0, "y": 0, "point": "tl", "type": "yinyang", "arg": 1},
+          {"x": 0, "y": 0, "point": "lt", "type": "number", "arg": 7}
       ]
-    },
-    {
+  },
+  {
       "id": 33,
       "grid": [
-        [0, 2, 2, 0],
-        [2, 1, 1, 2],
-        [2, 1, 1, 2],
-        [0, 2, 2, 0]
+          [1, 1],
+          [1, 1]
       ],
       "conditions": [
-        {"x": 1, "y": 0, "point": "bl", "type": "bridge", "arg": 1},
-        {"x": 2, "y": 0, "point": "br", "type": "bridge", "arg": 1},
-        {"x": 0, "y": 1, "point": "rt", "type": "bridge", "arg": 1},
-        {"x": 0, "y": 2, "point": "rt", "type": "bridge", "arg": 1},
-        {"x": 3, "y": 1, "point": "lb", "type": "bridge", "arg": 1},
-        {"x": 3, "y": 2, "point": "lt", "type": "bridge", "arg": 1},
-        {"x": 1, "y": 3, "point": "tl", "type": "bridge", "arg": 1},
-        {"x": 2, "y": 3, "point": "tl", "type": "bridge", "arg": 1},
-        {"x": 3, "y": 1, "point": "lt", "type": "number", "arg": 3}
+          {"x": 0, "y": 0, "point": "tl", "type": "bridge", "arg": 1},
+          {"x": 1, "y": 0, "point": "tr", "type": "bridge", "arg": 1},
+          {"x": 0, "y": 0, "point": "lt", "type": "bridge", "arg": 1},
+          {"x": 0, "y": 1, "point": "lt", "type": "bridge", "arg": 1},
+          {"x": 1, "y": 0, "point": "rb", "type": "bridge", "arg": 1},
+          {"x": 1, "y": 1, "point": "rt", "type": "bridge", "arg": 1},
+          {"x": 0, "y": 1, "point": "bl", "type": "bridge", "arg": 1},
+          {"x": 1, "y": 1, "point": "bl", "type": "bridge", "arg": 1},
+          {"x": 1, "y": 0, "point": "rt", "type": "number", "arg": 3}
       ]
-    },
-    {
+  },
+  {
       "id": 34,
       "grid": [
-        [0, 0, 2, 2, 0],
-        [0, 2, 1, 1, 0],
-        [2, 1, 1, 1, 2],
-        [0, 0, 2, 2, 0]
+          [0, 1, 1],
+          [1, 1, 1]
       ],
       "conditions": [
-        {"x": 0, "y": 2, "point": "rt", "type": "bridge", "arg": 2},
-        {"x": 4, "y": 2, "point": "lb", "type": "bridge", "arg": 2},
-        {"x": 2, "y": 0, "point": "br", "type": "kiosk", "arg": 1},
-        {"x": 3, "y": 0, "point": "bl", "type": "yinyang", "arg": 1},
-        {"x": 1, "y": 1, "point": "br", "type": "link", "arg": 1},
-        {"x": 2, "y": 3, "point": "tl", "type": "link", "arg": 1},
-        {"x": 2, "y": 3, "point": "tr", "type": "link", "arg": 2},
-        {"x": 3, "y": 3, "point": "tr", "type": "link", "arg": 2}
+          {"x": 0, "y": 1, "point": "lt", "type": "bridge", "arg": 2},
+          {"x": 2, "y": 1, "point": "rb", "type": "bridge", "arg": 2},
+          {"x": 1, "y": 0, "point": "tr", "type": "kiosk", "arg": 1},
+          {"x": 2, "y": 0, "point": "tl", "type": "yinyang", "arg": 1},
+          {"x": 0, "y": 1, "point": "tr", "type": "link", "arg": 1},
+          {"x": 1, "y": 1, "point": "bl", "type": "link", "arg": 1},
+          {"x": 1, "y": 1, "point": "br", "type": "link", "arg": 2},
+          {"x": 2, "y": 1, "point": "br", "type": "link", "arg": 2}
       ]
-    },
-    {
+  },
+  {
       "id": 35,
       "grid": [
-        [2, 1, 0, 1, 2],
-        [0, 1, 1, 1, 0],
-        [0, 0, 2, 2, 0]
+          [1, 0, 1],
+          [1, 1, 1]
       ],
       "conditions": [
-        {"x": 0, "y": 0, "point": "rb", "type": "kiosk", "arg": 1},
-        {"x": 4, "y": 0, "point": "lb", "type": "kiosk", "arg": 1},
-        {"x": 2, "y": 2, "point": "tl", "type": "yinyang", "arg": 1},
-        {"x": 2, "y": 2, "point": "tr", "type": "bridge", "arg": 1},
-        {"x": 3, "y": 2, "point": "tl", "type": "bridge", "arg": 2}
+          {"x": 0, "y": 0, "point": "lb", "type": "kiosk", "arg": 1},
+          {"x": 2, "y": 0, "point": "rb", "type": "kiosk", "arg": 1},
+          {"x": 1, "y": 1, "point": "bl", "type": "yinyang", "arg": 1},
+          {"x": 1, "y": 1, "point": "br", "type": "bridge", "arg": 1},
+          {"x": 2, "y": 1, "point": "bl", "type": "bridge", "arg": 2}
       ]
-    },
-    {
+  },
+  {
       "id": 36,
       "grid": [
-        [0, 2, 2, 0],
-        [0, 1, 1, 2],
-        [2, 1, 1, 1],
-        [0, 0, 2, 2]
+          [1, 1, 0],
+          [1, 1, 1]
       ],
       "conditions": [
-        {"x": 2, "y": 0, "point": "br", "type": "kiosk", "arg": 1},
-        {"x": 0, "y": 2, "point": "rt", "type": "kiosk", "arg": 1},
-        {"x": 1, "y": 0, "point": "bl", "type": "number", "arg": 4},
-        {"x": 3, "y": 1, "point": "bl", "type": "number", "arg": 3},
-        {"x": 2, "y": 3, "point": "tr", "type": "number", "arg": 1},
-        {"x": 3, "y": 3, "point": "tl", "type": "number", "arg": 2}
+          {"x": 1, "y": 0, "point": "tr", "type": "kiosk", "arg": 1},
+          {"x": 0, "y": 1, "point": "lt", "type": "kiosk", "arg": 1},
+          {"x": 0, "y": 0, "point": "tl", "type": "number", "arg": 4},
+          {"x": 2, "y": 1, "point": "tl", "type": "number", "arg": 3},
+          {"x": 1, "y": 1, "point": "br", "type": "number", "arg": 1},
+          {"x": 2, "y": 1, "point": "bl", "type": "number", "arg": 2}
       ]
-    },
-    {
+  },
+  {
       "id": 37,
       "grid": [
-        [2, 0, 0, 0],
-        [1, 2, 1, 2],
-        [1, 1, 1, 0],
-        [2, 0, 0, 0]
+          [1, 0, 1],
+          [1, 1, 1]
       ],
       "conditions": [
-        {"x": 0, "y": 3, "point": "tr", "type": "yinyang", "arg": 1},
-        {"x": 1, "y": 1, "point": "rb", "type": "number", "arg": 6},
-        {"x": 1, "y": 1, "point": "lb", "type": "link", "arg": 1},
-        {"x": 0, "y": 0, "point": "bl", "type": "link", "arg": 1},
-        {"x": 1, "y": 1, "point": "bl", "type": "link", "arg": 2},
-        {"x": 3, "y": 1, "point": "lb", "type": "link", "arg": 2}
+          {"x": 0, "y": 1, "point": "br", "type": "yinyang", "arg": 1},
+          {"x": 2, "y": 0, "point": "lb", "type": "number", "arg": 6},
+          {"x": 0, "y": 0, "point": "rb", "type": "link", "arg": 1},
+          {"x": 0, "y": 0, "point": "tl", "type": "link", "arg": 1},
+          {"x": 1, "y": 1, "point": "tl", "type": "link", "arg": 2},
+          {"x": 2, "y": 0, "point": "rb", "type": "link", "arg": 2}
       ]
-    },
-    {
+  },
+  {
       "id": 38,
       "grid": [
-        [2, 0, 2, 0],
-        [1, 1, 1, 2],
-        [2, 1, 1, 0],
-        [0, 2, 0, 0]
+          [1, 1, 1],
+          [0, 1, 1]
       ],
       "conditions": [
-        {"x": 0, "y": 0, "point": "br", "type": "yinyang", "arg": 1},
-        {"x": 0, "y": 2, "point": "tl", "type": "yinyang", "arg": 1},
-        {"x": 2, "y": 0, "point": "br", "type": "kiosk", "arg": 1},
-        {"x": 1, "y": 3, "point": "tr", "type": "kiosk", "arg": 1},
-        {"x": 0, "y": 2, "point": "rt", "type": "link", "arg": 1},
-        {"x": 3, "y": 1, "point": "lb", "type": "link", "arg": 1}
+          {"x": 0, "y": 0, "point": "tr", "type": "yinyang", "arg": 1},
+          {"x": 0, "y": 0, "point": "bl", "type": "yinyang", "arg": 1},
+          {"x": 2, "y": 0, "point": "tr", "type": "kiosk", "arg": 1},
+          {"x": 1, "y": 1, "point": "br", "type": "kiosk", "arg": 1},
+          {"x": 1, "y": 1, "point": "lt", "type": "link", "arg": 1},
+          {"x": 2, "y": 0, "point": "rb", "type": "link", "arg": 1}
       ]
-    },
-    {
+  },
+  {
       "id": 39,
       "grid": [
-        [0, 2, 0],
-        [1, 1, 2],
-        [1, 1, 1],
-        [2, 2, 0]
+          [1, 1, 0],
+          [1, 1, 1]
       ],
       "conditions": [
-        {"x": 0, "y": 3, "point": "tr", "type": "yinyang", "arg": 1},
-        {"x": 1, "y": 0, "point": "bl", "type": "kiosk", "arg": 1},
-        {"x": 1, "y": 0, "point": "br", "type": "bridge", "arg": 1},
-        {"x": 0, "y": 3, "point": "tl", "type": "bridge", "arg": 1},
-        {"x": 1, "y": 3, "point": "tl", "type": "bridge", "arg": 3},
-        {"x": 2, "y": 1, "point": "br", "type": "number", "arg": 2}
+          {"x": 0, "y": 1, "point": "br", "type": "yinyang", "arg": 1},
+          {"x": 1, "y": 0, "point": "tl", "type": "kiosk", "arg": 1},
+          {"x": 1, "y": 0, "point": "tr", "type": "bridge", "arg": 1},
+          {"x": 0, "y": 1, "point": "bl", "type": "bridge", "arg": 1},
+          {"x": 1, "y": 1, "point": "bl", "type": "bridge", "arg": 3},
+          {"x": 2, "y": 1, "point": "tr", "type": "number", "arg": 2}
       ]
-    },
-    {
+  },
+  {
       "id": 40,
       "grid": [
-        [0, 0, 2, 0, 0],
-        [2, 1, 1, 1, 0],
-        [2, 1, 2, 1, 2],
-        [0, 2, 0, 0, 0]
+          [1, 1, 1],
+          [1, 0, 1]
       ],
       "conditions": [
-        {"x": 0, "y": 1, "point": "rt", "type": "kiosk", "arg": 1},
-        {"x": 2, "y": 2, "point": "rb", "type": "bridge", "arg": 2},
-        {"x": 1, "y": 3, "point": "tl", "type": "bridge", "arg": 2},
-        {"x": 2, "y": 0, "point": "br", "type": "number", "arg": 3},
-        {"x": 0, "y": 2, "point": "rb", "type": "number", "arg": 3},
-        {"x": 4, "y": 2, "point": "lb", "type": "number", "arg": 3}
+          {"x": 0, "y": 0, "point": "lt", "type": "kiosk", "arg": 1},
+          {"x": 2, "y": 1, "point": "lb", "type": "bridge", "arg": 2},
+          {"x": 0, "y": 1, "point": "bl", "type": "bridge", "arg": 2},
+          {"x": 1, "y": 0, "point": "tr", "type": "number", "arg": 3},
+          {"x": 0, "y": 1, "point": "lb", "type": "number", "arg": 3},
+          {"x": 2, "y": 1, "point": "rb", "type": "number", "arg": 3}
       ]
-    },
-    {
+  },
+  {
       "id": 41,
       "grid": [
-        [0, 2, 0, 2],
-        [0, 1, 1, 1],
-        [2, 1, 1, 2],
-        [0, 2, 2, 0]
+          [1, 1, 1],
+          [1, 1, 0]
       ],
       "conditions": [
-        {"x": 3, "y": 0, "point": "bl", "type": "number", "arg": 3},
-        {"x": 1, "y": 0, "point": "bl", "type": "number", "arg": 4},
-        {"x": 1, "y": 3, "point": "tl", "type": "number", "arg": 4},
-        {"x": 3, "y": 0, "point": "br", "type": "link", "arg": 1},
-        {"x": 2, "y": 3, "point": "tr", "type": "link", "arg": 1},
-        {"x": 0, "y": 2, "point": "rb", "type": "link", "arg": 2},
-        {"x": 3, "y": 2, "point": "lt", "type": "link", "arg": 2}
+          {"x": 2, "y": 0, "point": "tl", "type": "number", "arg": 3},
+          {"x": 0, "y": 0, "point": "tl", "type": "number", "arg": 4},
+          {"x": 0, "y": 1, "point": "bl", "type": "number", "arg": 4},
+          {"x": 2, "y": 0, "point": "tr", "type": "link", "arg": 1},
+          {"x": 1, "y": 1, "point": "br", "type": "link", "arg": 1},
+          {"x": 0, "y": 1, "point": "lb", "type": "link", "arg": 2},
+          {"x": 1, "y": 1, "point": "rt", "type": "link", "arg": 2}
       ]
-    },
-    {
+  },
+  {
       "id": 42,
       "grid": [
-        [0, 0, 0, 2, 0],
-        [2, 1, 2, 1, 2],
-        [2, 1, 1, 1, 2],
-        [0, 2, 2, 2, 0]
+          [1, 0, 1],
+          [1, 1, 1]
       ],
       "conditions": [
-        {"x": 2, "y": 1, "point": "bl", "type": "kiosk", "arg": 1},
-        {"x": 2, "y": 1, "point": "br", "type": "bridge", "arg": 1},
-        {"x": 2, "y": 1, "point": "lb", "type": "number", "arg": 2},
-        {"x": 3, "y": 0, "point": "br", "type": "number", "arg": 2},
-        {"x": 0, "y": 1, "point": "rt", "type": "number", "arg": 2},
-        {"x": 4, "y": 1, "point": "lt", "type": "number", "arg": 2},
-        {"x": 0, "y": 2, "point": "rt", "type": "number", "arg": 2},
-        {"x": 0, "y": 2, "point": "rb", "type": "number", "arg": 2},
-        {"x": 4, "y": 2, "point": "lt", "type": "number", "arg": 2},
-        {"x": 4, "y": 2, "point": "lb", "type": "number", "arg": 2},
-        {"x": 1, "y": 3, "point": "tl", "type": "number", "arg": 2},
-        {"x": 1, "y": 3, "point": "tr", "type": "number", "arg": 2},
-        {"x": 2, "y": 3, "point": "tl", "type": "number", "arg": 2},
-        {"x": 2, "y": 3, "point": "tr", "type": "number", "arg": 2},
-        {"x": 3, "y": 3, "point": "tl", "type": "number", "arg": 2},
-        {"x": 3, "y": 3, "point": "tr", "type": "number", "arg": 2}
+          {"x": 1, "y": 1, "point": "tl", "type": "kiosk", "arg": 1},
+          {"x": 1, "y": 1, "point": "tr", "type": "bridge", "arg": 1},
+          {"x": 0, "y": 0, "point": "rb", "type": "number", "arg": 2},
+          {"x": 2, "y": 0, "point": "tr", "type": "number", "arg": 2},
+          {"x": 0, "y": 0, "point": "lt", "type": "number", "arg": 2},
+          {"x": 2, "y": 0, "point": "rt", "type": "number", "arg": 2},
+          {"x": 0, "y": 1, "point": "lt", "type": "number", "arg": 2},
+          {"x": 0, "y": 1, "point": "lb", "type": "number", "arg": 2},
+          {"x": 2, "y": 1, "point": "rt", "type": "number", "arg": 2},
+          {"x": 2, "y": 1, "point": "rb", "type": "number", "arg": 2},
+          {"x": 0, "y": 1, "point": "bl", "type": "number", "arg": 2},
+          {"x": 0, "y": 1, "point": "br", "type": "number", "arg": 2},
+          {"x": 1, "y": 1, "point": "bl", "type": "number", "arg": 2},
+          {"x": 1, "y": 1, "point": "br", "type": "number", "arg": 2},
+          {"x": 2, "y": 1, "point": "bl", "type": "number", "arg": 2},
+          {"x": 2, "y": 1, "point": "br", "type": "number", "arg": 2}
       ]
-    },
-    {
+  },
+  {
       "id": 43,
       "grid": [
-        [2, 1, 1, 1, 2],
-        [2, 1, 1, 1, 0]
+          [1, 1, 1],
+          [1, 1, 1]
       ],
       "conditions": [
-        {"x": 4, "y": 0, "point": "lb", "type": "yinyang", "arg": 1},
-        {"x": 0, "y": 0, "point": "rt", "type": "number", "arg": 5},
-        {"x": 0, "y": 0, "point": "rb", "type": "number", "arg": 5},
-        {"x": 0, "y": 1, "point": "rt", "type": "number", "arg": 5},
-        {"x": 0, "y": 1, "point": "rb", "type": "number", "arg": 5}
+          {"x": 2, "y": 0, "point": "rb", "type": "yinyang", "arg": 1},
+          {"x": 0, "y": 0, "point": "lt", "type": "number", "arg": 5},
+          {"x": 0, "y": 0, "point": "lb", "type": "number", "arg": 5},
+          {"x": 0, "y": 1, "point": "lt", "type": "number", "arg": 5},
+          {"x": 0, "y": 1, "point": "lb", "type": "number", "arg": 5}
       ]
-    },
-    {
+  },
+  {
       "id": 44,
       "grid": [
-        [0, 2, 2, 2, 0],
-        [0, 1, 1, 1, 2],
-        [2, 1, 1, 1, 0],
-        [0, 0, 0, 2, 0]
+          [1, 1, 1],
+          [1, 1, 1]
       ],
       "conditions": [
-        {"x": 3, "y": 3, "point": "tl", "type": "kiosk", "arg": 1},
-        {"x": 1, "y": 0, "point": "br", "type": "bridge", "arg": 2},
-        {"x": 0, "y": 2, "point": "rt", "type": "bridge", "arg": 3},
-        {"x": 4, "y": 1, "point": "lt", "type": "number", "arg": 12},
-        {"x": 1, "y": 0, "point": "bl", "type": "link", "arg": 1},
-        {"x": 2, "y": 0, "point": "bl", "type": "link", "arg": 1},
-        {"x": 2, "y": 0, "point": "br", "type": "link", "arg": 2},
-        {"x": 3, "y": 0, "point": "br", "type": "link", "arg": 2}
+          {"x": 2, "y": 1, "point": "bl", "type": "kiosk", "arg": 1},
+          {"x": 0, "y": 0, "point": "tr", "type": "bridge", "arg": 2},
+          {"x": 0, "y": 1, "point": "lt", "type": "bridge", "arg": 3},
+          {"x": 2, "y": 0, "point": "rt", "type": "number", "arg": 12},
+          {"x": 0, "y": 0, "point": "tl", "type": "link", "arg": 1},
+          {"x": 1, "y": 0, "point": "tl", "type": "link", "arg": 1},
+          {"x": 1, "y": 0, "point": "tr", "type": "link", "arg": 2},
+          {"x": 2, "y": 0, "point": "tr", "type": "link", "arg": 2}
       ]
-    },
-    {
+  },
+  {
       "id": 45,
       "grid": [
-        [2, 2, 2],
-        [1, 1, 1],
-        [1, 1, 1],
-        [2, 2, 2]
+          [1, 1, 1],
+          [1, 1, 1]
       ],
       "conditions": [
-        {"x": 1, "y": 0, "point": "bl", "type": "kiosk", "arg": 1},
-        {"x": 1, "y": 3, "point": "tl", "type": "kiosk", "arg": 1},
-        {"x": 0, "y": 0, "point": "br", "type": "yinyang", "arg": 1},
-        {"x": 0, "y": 3, "point": "tr", "type": "yinyang", "arg": 1},
-        {"x": 1, "y": 0, "point": "br", "type": "bridge", "arg": 2},
-        {"x": 1, "y": 3, "point": "tr", "type": "bridge", "arg": 2},
-        {"x": 2, "y": 0, "point": "bl", "type": "number", "arg": 1},
-        {"x": 2, "y": 3, "point": "tl", "type": "number", "arg": 1}
+          {"x": 1, "y": 0, "point": "tl", "type": "kiosk", "arg": 1},
+          {"x": 1, "y": 1, "point": "bl", "type": "kiosk", "arg": 1},
+          {"x": 0, "y": 0, "point": "tr", "type": "yinyang", "arg": 1},
+          {"x": 0, "y": 1, "point": "br", "type": "yinyang", "arg": 1},
+          {"x": 1, "y": 0, "point": "tr", "type": "bridge", "arg": 2},
+          {"x": 1, "y": 1, "point": "br", "type": "bridge", "arg": 2},
+          {"x": 2, "y": 0, "point": "tl", "type": "number", "arg": 1},
+          {"x": 2, "y": 1, "point": "bl", "type": "number", "arg": 1}
       ]
-    },
-    {
+  },
+  {
       "id": 46,
       "grid": [
-        [0, 2, 2, 0, 0],
-        [0, 1, 1, 1, 0],
-        [2, 1, 1, 1, 2]
+          [1, 1, 1],
+          [1, 1, 1]
       ],
       "conditions": [
-        {"x": 2, "y": 0, "point": "bl", "type": "kiosk", "arg": 1},
-        {"x": 4, "y": 2, "point": "lb", "type": "kiosk", "arg": 1},
-        {"x": 1, "y": 0, "point": "br", "type": "number", "arg": 5},
-        {"x": 2, "y": 0, "point": "br", "type": "number", "arg": 7},
-        {"x": 0, "y": 2, "point": "rb", "type": "number", "arg": 7}
+          {"x": 1, "y": 0, "point": "tl", "type": "kiosk", "arg": 1},
+          {"x": 2, "y": 1, "point": "rb", "type": "kiosk", "arg": 1},
+          {"x": 0, "y": 0, "point": "tr", "type": "number", "arg": 5},
+          {"x": 1, "y": 0, "point": "tr", "type": "number", "arg": 7},
+          {"x": 0, "y": 1, "point": "lb", "type": "number", "arg": 7}
       ]
-    },
-    {
+  },
+  {
       "id": 47,
       "grid": [
-        [2, 2, 2],
-        [1, 1, 1],
-        [1, 1, 1]
+          [1, 1, 1],
+          [1, 1, 1]
       ],
       "conditions": [
-        {"x": 0, "y": 0, "point": "bl", "type": "kiosk", "arg": 1},
-        {"x": 0, "y": 0, "point": "br", "type": "number", "arg": 2},
-        {"x": 1, "y": 0, "point": "bl", "type": "number", "arg": 6},
-        {"x": 1, "y": 0, "point": "br", "type": "number", "arg": 6},
-        {"x": 2, "y": 0, "point": "bl", "type": "number", "arg": 1},
-        {"x": 2, "y": 0, "point": "br", "type": "number", "arg": 6}
+          {"x": 0, "y": 0, "point": "tl", "type": "kiosk", "arg": 1},
+          {"x": 0, "y": 0, "point": "tr", "type": "number", "arg": 2},
+          {"x": 1, "y": 0, "point": "tl", "type": "number", "arg": 6},
+          {"x": 1, "y": 0, "point": "tr", "type": "number", "arg": 6},
+          {"x": 2, "y": 0, "point": "tl", "type": "number", "arg": 1},
+          {"x": 2, "y": 0, "point": "tr", "type": "number", "arg": 6}
       ]
-    },
-    {
+  },
+  {
       "id": 48,
       "grid": [
-        [0, 0, 2, 0, 0],
-        [2, 1, 1, 1, 0],
-        [2, 1, 1, 1, 2],
-        [0, 0, 2, 0, 0]
+          [1, 1, 1],
+          [1, 1, 1]
       ],
       "conditions": [
-        {"x": 0, "y": 2, "point": "rt", "type": "kiosk", "arg": 1},
-        {"x": 0, "y": 1, "point": "rt", "type": "yinyang", "arg": 1},
-        {"x": 2, "y": 3, "point": "tr", "type": "yinyang", "arg": 1},
-        {"x": 2, "y": 3, "point": "tl", "type": "bridge", "arg": 1},
-        {"x": 2, "y": 0, "point": "bl", "type": "number", "arg": 5},
-        {"x": 4, "y": 2, "point": "lb", "type": "number", "arg": 7}
+          {"x": 0, "y": 1, "point": "lt", "type": "kiosk", "arg": 1},
+          {"x": 0, "y": 0, "point": "lt", "type": "yinyang", "arg": 1},
+          {"x": 1, "y": 1, "point": "br", "type": "yinyang", "arg": 1},
+          {"x": 1, "y": 1, "point": "bl", "type": "bridge", "arg": 1},
+          {"x": 1, "y": 0, "point": "tl", "type": "number", "arg": 5},
+          {"x": 2, "y": 1, "point": "rb", "type": "number", "arg": 7}
       ]
-    },
-    {
+  },
+  {
       "id": 49,
       "grid": [
-        [0, 0, 2, 0, 0],
-        [2, 1, 1, 1, 2],
-        [2, 1, 1, 1, 2]
+          [1, 1, 1],
+          [1, 1, 1]
       ],
       "conditions": [
-        {"x": 2, "y": 0, "point": "bl", "type": "number", "arg": 4},
-        {"x": 4, "y": 1, "point": "lb", "type": "number", "arg": 4},
-        {"x": 0, "y": 1, "point": "rt", "type": "link", "arg": 1},
-        {"x": 4, "y": 2, "point": "lb", "type": "link", "arg": 1},
-        {"x": 4, "y": 1, "point": "lt", "type": "link", "arg": 2},
-        {"x": 0, "y": 2, "point": "rb", "type": "link", "arg": 2}
+          {"x": 1, "y": 0, "point": "tl", "type": "number", "arg": 4},
+          {"x": 2, "y": 0, "point": "rb", "type": "number", "arg": 4},
+          {"x": 0, "y": 0, "point": "lt", "type": "link", "arg": 1},
+          {"x": 2, "y": 1, "point": "rb", "type": "link", "arg": 1},
+          {"x": 2, "y": 0, "point": "rt", "type": "link", "arg": 2},
+          {"x": 0, "y": 1, "point": "lb", "type": "link", "arg": 2}
       ]
-    },
-    {
+  },
+  {
       "id": 50,
       "grid": [
-        [0, 2, 2, 0, 0],
-        [2, 1, 1, 1, 2],
-        [0, 1, 1, 1, 2],
-        [0, 0, 2, 2, 0]
+          [1, 1, 1],
+          [1, 1, 1]
       ],
       "conditions": [
-        {"x": 0, "y": 1, "point": "rb", "type": "kiosk", "arg": 1},
-        {"x": 1, "y": 0, "point": "bl", "type": "number", "arg": 2},
-        {"x": 2, "y": 0, "point": "bl", "type": "number", "arg": 2},
-        {"x": 2, "y": 0, "point": "br", "type": "number", "arg": 2},
-        {"x": 4, "y": 1, "point": "lt", "type": "number", "arg": 2},
-        {"x": 4, "y": 1, "point": "lb", "type": "number", "arg": 2},
-        {"x": 4, "y": 2, "point": "lb", "type": "number", "arg": 2},
-        {"x": 2, "y": 3, "point": "tr", "type": "number", "arg": 2},
-        {"x": 3, "y": 3, "point": "tr", "type": "number", "arg": 2},
-        {"x": 2, "y": 3, "point": "tl", "type": "number", "arg": 11}
+          {"x": 0, "y": 0, "point": "lb", "type": "kiosk", "arg": 1},
+          {"x": 0, "y": 0, "point": "tl", "type": "number", "arg": 2},
+          {"x": 1, "y": 0, "point": "tl", "type": "number", "arg": 2},
+          {"x": 1, "y": 0, "point": "tr", "type": "number", "arg": 2},
+          {"x": 2, "y": 0, "point": "rt", "type": "number", "arg": 2},
+          {"x": 2, "y": 0, "point": "rb", "type": "number", "arg": 2},
+          {"x": 2, "y": 1, "point": "rb", "type": "number", "arg": 2},
+          {"x": 1, "y": 1, "point": "br", "type": "number", "arg": 2},
+          {"x": 2, "y": 1, "point": "br", "type": "number", "arg": 2},
+          {"x": 1, "y": 1, "point": "bl", "type": "number", "arg": 11}
       ]
-    }
-  ]
+  }
+]

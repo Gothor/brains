@@ -5,6 +5,7 @@ let levels;
 let win;
 let currentLevel = 0;
 let images;
+let rotateArrows;
 
 function preload() {
   levels = loadJSON("assets/levels.json");
@@ -17,6 +18,10 @@ function preload() {
     loadImage("img/tile6.png"),
     loadImage("img/tile7.png"),
   ];
+  rotateArrows = [
+    loadImage("img/rotateNegative.png"),
+    loadImage("img/rotatePositive.png"),
+  ]
 }
 
 function loadLevel(n) {
@@ -243,31 +248,21 @@ function mousePressed() {
     selected.select();
   }
 
-  let [x, y] = grid.getCoordinates(mouseX, mouseY);
-  if (x !== null && y !== null) {
-    if (previouslySelected() != null) {
-      for (let t of hand) {
-        if (t.selected) {
-          grid.setTile(x, y, t);
-          break;
-        }
-      }
-    } else {
-      if (grid.data[y][x])
-        grid.data[y][x].select();
-    }
-  }
-  if (!selected && (x === null || y === null)) {
+  let gridActed = grid.onMousePressed();
+  
+  if (!selected && !gridActed) {
     unselectAll();
   }
   
   redraw();
 }
 
+let pointerCursor = false;
+
 function mouseMoved() {
-  let pointerCursor = false;
-  
   if (!hand) return;
+
+  pointerCursor = false;
 
   for (let i = 0; i < hand.length; i++) {
     let x = (width / 64) * (i + 1) + (width / 8) * i;
@@ -277,13 +272,8 @@ function mouseMoved() {
       pointerCursor = true;
     }
   }
-  
-  if (!pointerCursor) {
-  let [x, y] = grid.getCoordinates(mouseX, mouseY);
-  if (x !== null && y !== null && (previouslySelected() || grid.data[y][x])) {
-    pointerCursor = true;
-  }
-  }
+
+  grid.onMouseMoved();
   
   if (pointerCursor) {
     canvas.style.cursor = "pointer";

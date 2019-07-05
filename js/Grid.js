@@ -69,8 +69,24 @@ class Grid {
               stroke(255);
               strokeWeight(3);
               rect(0, 0, this.tileWidth, this.tileWidth);
-            } else {
+            } else if (!this.data[y][x].selected) {
               this.data[y][x].draw(this.tileWidth);
+            }
+            pop();
+          }
+        }
+      }
+      for (let y = 0; y < this.data.length; y++) {
+        for (let x = 0; x < this.data[y].length; x++) {
+          if (this.schema[y][x] === 1 && this.data[y][x] && this.data[y][x].selected) { // Tuile
+            push();
+            translate(this.tileWidth * x, this.tileWidth * y);
+            this.data[y][x].draw(this.tileWidth);
+            if (this.data[y][x].selected) {
+              let h = this.tileWidth / 3;
+              let w = this.tileWidth * rotateArrows[0].width / rotateArrows[0].height / 3;
+              image(rotateArrows[0], -w - 20, (this.tileWidth - h) / 2, w, h);
+              image(rotateArrows[1], this.tileWidth + 20, (this.tileWidth - h) / 2, w, h);
             }
             pop();
           }
@@ -143,7 +159,7 @@ class Grid {
 
           let found;
           for (let c2 of this.conditions) {
-            if (c2.type === Condition.TYPES.LINK && c2.arg === c.arg && c2.x === _x && c2.y === _y) {
+            if (c2.type === Condition.TYPES.LINK && c2.arg === c.arg && c2.x === _x && c2.y === _y && end.point == c2.point) {
               found = true;
               break;
             }
@@ -155,6 +171,71 @@ class Grid {
         }
       }
       return true;
+    }
+
+    onMousePressed() {
+      for (let y = 0; y < this.data.length; y++) {
+        for (let x = 0; x < this.data[y].length; x++) {
+          if (this.data[y][x] && this.data[y][x].selected) {
+            let h = this.tileWidth / 3;
+            let w = this.tileWidth * rotateArrows[0].width / rotateArrows[0].height / 3;
+            let x2 = this.x + this.tileWidth * x;
+            let y2 = this.y + this.tileWidth * y;
+
+            if (mouseX >= x2 - w - 20 && mouseX < x2 - 20 && mouseY >= y2 + (this.tileWidth - h) / 2 && mouseY < y2 + h + (this.tileWidth - h) / 2) {
+              this.data[y][x].rotate(1);
+              return true;
+            } else if (mouseX >= x2 + this.tileWidth + 20 && mouseX < x2 + this.tileWidth + w + 20 && mouseY >= y2 + (this.tileWidth - h) / 2 && mouseY < y2 + h + (this.tileWidth - h) / 2) {
+              this.data[y][x].rotate(-1);
+              return true;
+            }
+          }
+        }
+      }
+
+      let [x, y] = grid.getCoordinates(mouseX, mouseY);
+      if (x !== null && y !== null) {
+        if (previouslySelected() != null) {
+          for (let t of hand) {
+            if (t.selected) {
+              grid.setTile(x, y, t);
+              return true
+            }
+          }
+        } else {
+          if (grid.data[y][x])
+            grid.data[y][x].select();
+            return true;
+        }
+      }
+
+      return false;
+    }
+
+    onMouseMoved() {
+      let [x, y] = this.getCoordinates(mouseX, mouseY);
+      if (x !== null && y !== null && (previouslySelected() || this.data[y][x])) {
+        pointerCursor = true;
+      }
+
+      for (let y = 0; y < this.data.length; y++) {
+        for (let x = 0; x < this.data[y].length; x++) {
+          if (this.data[y][x] && this.data[y][x].selected) {
+            let h = this.tileWidth / 3;
+            let w = this.tileWidth * rotateArrows[0].width / rotateArrows[0].height / 3;
+            let x2 = this.x + this.tileWidth * x;
+            let y2 = this.y + this.tileWidth * y;
+
+            if (mouseX >= x2 - w - 20 && mouseX < x2 - 20 && mouseY >= y2 + (this.tileWidth - h) / 2 && mouseY < y2 + h + (this.tileWidth - h) / 2) {
+              pointerCursor = true;
+              return;
+            } else if (mouseX >= x2 + this.tileWidth + 20 && mouseX < x2 + this.tileWidth + w + 20 && mouseY >= y2 + (this.tileWidth - h) / 2 && mouseY < y2 + h + (this.tileWidth - h) / 2) {
+              pointerCursor = true;
+              return;
+            }
+          }
+        }
+      }
     }
   
   }

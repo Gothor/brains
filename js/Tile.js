@@ -1,76 +1,48 @@
-class Tile {
+class Tile extends GameObject {
 
-  constructor(image) {
+  constructor(x, y, image) {
+    super(x, y, 1);
+    this.w = 0;
+
     this.connections = [];
     this.selected = false;
     this.image = image;
     this.rotated = 0;
+    this.hover = false;
+    this.lastHoverEvent = 0;
+    this.dragged = false;
   }
 
   addConnection(a, b, spec) {
     this.connections.push([a, b, spec ? spec : Tile.SPEC.NONE]);
   }
 
-  draw(w) {
-    if (this.image) {
-      push();
-      translate(w/2, w/2);
-      rotate(this.rotated * HALF_PI);
-      translate(-w/2,-w/2);
-      image(this.image, 0, 0, w, w);
-      pop();
+  draw() {
+    if (!this.image) return;
+    let [x, y] = grid.getCoordinates(this.x, this.y);
+    if (grid.contains(this) && grid.placeholder && x === grid.placeholder.x && y === grid.placeholder.y) return;
+    
+    let d = Date.now() - this.lastHoverEvent;
+    d = constrain(d, 0, 100);
+    if (this.hover)
+      d = map(d, 0, 100, 1.0, 1.1);
+    else
+      d = map(d, 0, 100, 1.1, 1.0);
 
+    push();
+    translate(this.x, this.y);
+    scale(d, d);
+    rotate(this.rotated * HALF_PI);
+    image(this.image, -this.w / 2, -this.w / 2, this.w, this.w);
     if (this.selected) {
       strokeWeight(4);
       stroke(0, 200, 0);
       noFill();
-      rect(0, 0, w, w);
+      rect(-this.w / 2, -this.w / 2, this.w, this.w);
     }
-      return;
-    }
-    
-    strokeWeight(4);
-    noFill();
-    for (let c of this.connections) {
-      let {
-        x: x1,
-        y: y1
-      } = this.getCoordinates(c[0], w);
-      let {
-        x: x2,
-        y: y2
-      } = this.getCoordinates(c[1], w);
+    pop();
 
-      switch (c[2]) {
-        case Tile.SPEC.NONE:
-          stroke(0);
-          break;
-        case Tile.SPEC.BRIDGE:
-          stroke(200, 100, 0);
-          break;
-        case Tile.SPEC.KIOSK:
-          stroke(0, 200, 0);
-          break;
-        case Tile.SPEC.YINYANG:
-          stroke(150, 150, 150);
-          break;
-      }
-
-        let {x: a, y: b} = Tile.getCurveFor(c[0]);
-        let {x: d, y: e} = Tile.getCurveFor(c[1]);
-        bezier(x1, y1, a * w, b * w, d * w, e * w, x2, y2);
-
-      if (c[2] === Tile.SPEC.YINYANG) {
-        fill(150, 150, 150);
-        ellipse(w / 2, w / 2, w / 3);
-        noFill();
-      }
-    }
-
-    if (this.selected) {
-      stroke(0, 200, 0);
-    }
-    rect(0, 0, w, w);
+    return;
   }
   
   static getCurveFor(p) {
@@ -175,6 +147,45 @@ class Tile {
       c[0] = (c[0] + 2 * n) % 8;
       c[1] = (c[1] + 2 * n) % 8;
     }
+  }
+
+  onMousePressed() {
+    let r = this.getRect();
+    this.hover = mouseX >= r.x && mouseX < r.x + r.w && mouseY >= r.y && mouseY < r.y + r.h;
+    if (this.hover) {
+      this.dragged = true;
+      this.origX = this.x;
+      this.origY = this.y;
+      this.origMouseX = mouseX;
+      this.origMouseY = mouseY;
+    }
+  }
+
+  onMouseDragged() {
+    if (!this.dragged) return;
+
+    this.x = this.origX + (mouseX - this.origMouseX);
+    this.y = this.origY + (mouseY - this.origMouseY);
+  }
+
+  getRect() {
+    return {x: this.x - this.w / 2, y: this.y - this.w / 2, w: this.w, h: this.w};
+  }
+
+  onMouseMoved() {
+    let hover;
+
+    let r = this.getRect();
+    hover = mouseX >= r.x && mouseX < r.x + r.w && mouseY >= r.y && mouseY < r.y + r.h;
+
+    if (this.hover != hover) {
+      this.hover = hover;
+      this.lastHoverEvent = Date.now();
+    }
+  }
+
+  onMouseReleased() {
+    this.dragged = false;
   }
 
   static getFacingPoint(p) {

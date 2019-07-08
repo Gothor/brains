@@ -56,8 +56,8 @@ function loadLevel(n) {
 
   for (let tile of GameObject.all(Tile)) hand.resetTile(tile);
 
-  let h = grid.tileWidth / 3;
-  let w = grid.tileWidth * rotateLeft.image.width / rotateLeft.image.height / 3;
+  let h = grid.tileWidth;
+  let w = grid.tileWidth * rotateLeft.image.width / rotateLeft.image.height;
   rotateLeft.w = w;
   rotateLeft.h = h;
   rotateRight.w = w;

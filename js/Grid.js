@@ -249,8 +249,8 @@ class Grid extends GameObject {
 
           rotateLeft.show();
           rotateRight.show();
-          let h = this.tileWidth / 3;
-          let w = this.tileWidth * rotateLeft.image.width / rotateLeft.image.height / 3;
+          let h = this.tileWidth;
+          let w = this.tileWidth * rotateLeft.image.width / rotateLeft.image.height;
           rotateLeft.setPosition(this.x - w - 20 + x * this.tileWidth, this.y + (this.tileWidth - h) / 2 + y * this.tileWidth);
           rotateRight.setPosition(this.x + this.tileWidth + 20 + x * this.tileWidth, this.y + (this.tileWidth - h) / 2 + y * this.tileWidth);
         }

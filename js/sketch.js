@@ -116,6 +116,8 @@ function setup() {
   currentLevel = localStorage.getItem("currentLevel");
   if (currentLevel === null) {
     currentLevel = 0;
+  } else {
+    currentLevel = parseInt(currentLevel);
   }
   loadLevel(currentLevel);
 }

@@ -28,6 +28,8 @@ function preload() {
 
 function loadLevel(n) {
   localStorage.setItem("currentLevel", n);
+  rotateLeft.hide();
+  rotateRight.hide();
 
   if (grid) grid.delete();
 

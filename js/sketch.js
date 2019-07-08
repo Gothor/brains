@@ -6,6 +6,8 @@ let win;
 let currentLevel = 0;
 let images;
 let rotateArrows;
+let rotateLeft;
+let rotateRight;
 
 function preload() {
   levels = loadJSON("assets/levels.json");
@@ -53,6 +55,13 @@ function loadLevel(n) {
   }
 
   for (let tile of GameObject.all(Tile)) hand.resetTile(tile);
+
+  let h = grid.tileWidth / 3;
+  let w = grid.tileWidth * rotateLeft.image.width / rotateLeft.image.height / 3;
+  rotateLeft.w = w;
+  rotateLeft.h = h;
+  rotateRight.w = w;
+  rotateRight.h = h;
 }
 
 function setup() {
@@ -112,6 +121,17 @@ function setup() {
 
   hand = new Hand(0, height - 150, 7);
   hand.add(GameObject.all(Tile));
+
+  rotateLeft = new Button(0, 0, rotateArrows[0].width, rotateArrows[0].height, rotateArrows[0], x => {
+    let tile = selectedTile();
+    if (tile) tile.rotate(1);
+  });
+  rotateRight = new Button(0, 0, rotateArrows[1].width, rotateArrows[1].height, rotateArrows[1], x => {
+    let tile = selectedTile();
+    if (tile) tile.rotate(-1);
+  });
+  rotateLeft.hide();
+  rotateRight.hide();
 
   currentLevel = localStorage.getItem("currentLevel");
   if (currentLevel === null) {
@@ -175,31 +195,6 @@ function updateMouseInput(e) {
   mouseY = Math.floor(e.touches.item(0).clientY - canvas.offsetTop);
 }
 
-let mouseMoveHandler = function(e) {
-  if (mousedown) return;
-  if (!hand) return;
-
-  pointerCursor = false;
-
-  for (let o of GameObject.all()) {
-    o.onMouseMoved();
-  }
-  for (let i = 0; i < hand.length; i++) {
-    let x = (width / 64) * (i + 1) + (width / 8) * i;
-    let y = height * 345 / 400;
-
-    if (mouseX >= x && mouseX < x + width / 8 && mouseY >= y && mouseY < y + width / 8) {
-      pointerCursor = true;
-    }
-  }
-  
-  if (pointerCursor) {
-    canvas.style.cursor = "pointer";
-  } else {
-    canvas.style.cursor = "auto";
-  }
-};
-
 let mouseDownHandler = function(e) {
   mousedown = true;
 
@@ -208,8 +203,8 @@ let mouseDownHandler = function(e) {
     return;
   }
   
-  for (let o of GameObject.all()) {
-    o.onMousePressed();
+  for (let o of GameObject.all().reverse()) {
+    if (o.onMousePressed()) return;
   }
 };
 
@@ -217,7 +212,27 @@ let mouseUpHandler = function(e) {
   mousedown = false;
 
   for (let o of GameObject.all()) {
-    o.onMouseReleased();
+    if (o.onMouseReleased()) return;
+  }
+};
+
+let mouseMoveHandler = function(e) {
+  if (mousedown) return;
+  if (!hand) return;
+
+  pointerCursor = false;
+
+  let objects = GameObject.all().reverse();
+  let hovered = false;
+  for (let o of objects) {
+    if (!hovered) hovered = o.onMouseMoved();
+    else o.hover = false; 
+  }
+  
+  if (pointerCursor) {
+    canvas.style.cursor = "pointer";
+  } else {
+    canvas.style.cursor = "auto";
   }
 };
 

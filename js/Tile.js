@@ -154,11 +154,14 @@ class Tile extends GameObject {
     this.hover = mouseX >= r.x && mouseX < r.x + r.w && mouseY >= r.y && mouseY < r.y + r.h;
     if (this.hover) {
       this.dragged = true;
+      this.z = 1.5;
       this.origX = this.x;
       this.origY = this.y;
       this.origMouseX = mouseX;
       this.origMouseY = mouseY;
     }
+
+    return false;
   }
 
   onMouseDragged() {
@@ -181,11 +184,20 @@ class Tile extends GameObject {
     if (this.hover != hover) {
       this.hover = hover;
       this.lastHoverEvent = Date.now();
+
+      if (this.hover) {
+        this.z = 1.5;
+      } else {
+        this.z = 1;
+      }
     }
+
+    pointerCursor |= this.hover;
   }
 
   onMouseReleased() {
     this.dragged = false;
+    return false;
   }
 
   static getFacingPoint(p) {

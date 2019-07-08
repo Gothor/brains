@@ -58,9 +58,10 @@ class Grid extends GameObject {
     remove(tile) {
       for (let y = 0; y < this.data.length; y++) {
         for (let x = 0; x < this.data[y].length; x++) {
-          if (this.data[y][x] && this.data[y][x] === tile)
+          if (this.data[y][x] && this.data[y][x] === tile) {
             this.data[y][x] = null;
             return;
+          }
         }
       }
     }
@@ -92,16 +93,7 @@ class Grid extends GameObject {
       // Draw empty tiles
       for (let y = 0; y < this.data.length; y++) {
         for (let x = 0; x < this.data[y].length; x++) {
-          if (this.placeholder && this.placeholder.x === x && this.placeholder.y === y) {
-            push();
-            translate(this.tileWidth * x, this.tileWidth * y);
-            translate(this.tileWidth/2, this.tileWidth/2);
-            rotate(this.placeholder.tile.rotated * HALF_PI);
-            translate(-this.tileWidth/2,-this.tileWidth/2);
-            tint(255, 125);
-            image(this.placeholder.tile.image, 0, 0, this.tileWidth, this.tileWidth);
-            pop();
-          } else if (this.schema[y][x] === 1 && !this.data[y][x]) { // Tuile
+          if (this.schema[y][x] === 1 && (!this.data[y][x] || this.placeholder && this.placeholder.x === x && this.placeholder.y === y)) {
             push();
             translate(this.tileWidth * x, this.tileWidth * y);
             fill(255, 255, 255, 75);
@@ -112,22 +104,20 @@ class Grid extends GameObject {
           }
         }
       }
-      // Draw 
-      for (let y = 0; y < this.data.length; y++) {
-        for (let x = 0; x < this.data[y].length; x++) {
-          if (this.schema[y][x] === 1 && this.data[y][x] && this.data[y][x].selected) { // Tuile
-            push();
-            translate(this.tileWidth * x, this.tileWidth * y);
-            if (this.data[y][x].selected) {
-              let h = this.tileWidth / 3;
-              let w = this.tileWidth * rotateArrows[0].width / rotateArrows[0].height / 3;
-              image(rotateArrows[0], -w - 20, (this.tileWidth - h) / 2, w, h);
-              image(rotateArrows[1], this.tileWidth + 20, (this.tileWidth - h) / 2, w, h);
-            }
-            pop();
-          }
-        }
+
+      // Draw placeholder
+      if (this.placeholder) { // Draw placeholder
+        push();
+        translate(this.tileWidth * this.placeholder.x, this.tileWidth * this.placeholder.y);
+        translate(this.tileWidth / 2, this.tileWidth / 2);
+        rotate(this.placeholder.tile.rotated * HALF_PI);
+        translate(-this.tileWidth / 2, -this.tileWidth / 2);
+        tint(255, 125);
+        image(this.placeholder.tile.image, 0, 0, this.tileWidth, this.tileWidth);
+        pop();
       }
+
+      // Draw conditions
       for (let condition of this.conditions) {
         push();
         translate(this.tileWidth * condition.x, this.tileWidth * condition.y);
@@ -227,103 +217,60 @@ class Grid extends GameObject {
       return true;
     }
 
-    onMouseReleased() {
-      this.placeholder = null;
-    }
-
     onMousePressed() {
-      let {x, y} = this.getPositionOf(selectedTile());
-      if (x !== null) {
-        let h = this.tileWidth / 3;
-        let w = this.tileWidth * rotateArrows[0].width / rotateArrows[0].height / 3;
-        let x2 = this.x + this.tileWidth * x;
-        let y2 = this.y + this.tileWidth * y;
+      unselectAll();
+      rotateLeft.hide();
+      rotateRight.hide();
 
-        if (mouseX >= x2 - w - 20 && mouseX < x2 - 20 && mouseY >= y2 + (this.tileWidth - h) / 2 && mouseY < y2 + h + (this.tileWidth - h) / 2) {
-          this.data[y][x].rotate(1);
-          return true;
-        } else if (mouseX >= x2 + this.tileWidth + 20 && mouseX < x2 + this.tileWidth + w + 20 && mouseY >= y2 + (this.tileWidth - h) / 2 && mouseY < y2 + h + (this.tileWidth - h) / 2) {
-          this.data[y][x].rotate(-1);
-          return true;
-        }
-      }
+      let [x, y] = this.getCoordinates(mouseX, mouseY);
+      this.selected = {x, y};
 
-      [x, y] = grid.getCoordinates(mouseX, mouseY);
-      if (x !== null && y !== null) {
-        if (previouslySelected() != null) {
-          for (let t of GameObject.all(Tile)) {
-            if (t.selected) {
-              grid.setTile(x, y, t);
-              return true;
-            }
-          }
-        } else {
-          if (grid.data[y][x])
-            grid.data[y][x].select();
-            return true;
-        }
-      } else {
-        unselectAll();
+      let tile = draggedTile();
+      if (tile) {
+        this.remove(tile);
+        tile.w = width / 8;
       }
 
       return false;
     }
 
+    onMouseReleased() {
+      let tile = draggedTile();
+      if (!tile) return;
+
+      this.placeholder = null;
+
+      let [x, y] = this.getCoordinates(tile.x, tile.y);
+      if (x !== null && y !== null) {
+        this.setTile(x, y, tile);
+
+        if (this.selected.x === x && this.selected.y === y) {
+          tile.select();
+
+          rotateLeft.show();
+          rotateRight.show();
+          let h = this.tileWidth / 3;
+          let w = this.tileWidth * rotateLeft.image.width / rotateLeft.image.height / 3;
+          rotateLeft.setPosition(this.x - w - 20 + x * this.tileWidth, this.y + (this.tileWidth - h) / 2 + y * this.tileWidth);
+          rotateRight.setPosition(this.x + this.tileWidth + 20 + x * this.tileWidth, this.y + (this.tileWidth - h) / 2 + y * this.tileWidth);
+        }
+
+        return
+      }
+      this.remove(tile);
+      hand.resetTile(tile);
+    }
+
     onMouseDragged() {
       let tile = draggedTile();
       if (!tile) return;
-      
-      if (this.contains(tile)) {
-        this.remove(tile);
-        tile.w = width / 8;
-      }
 
-      let [x, y] = grid.getCoordinates(tile.x, tile.y);
+      let [x, y] = this.getCoordinates(tile.x, tile.y);
       if (x !== null && y !== null) {
         this.setPlaceholder(x, y, tile);
       } else {
         this.placeholder = null;
       }
-    }
-
-    onMouseMoved() {
-      let [x, y] = this.getCoordinates(mouseX, mouseY);
-      if (x !== null && y !== null && (previouslySelected() || this.data[y][x])) {
-        pointerCursor = true;
-      }
-
-      for (let y = 0; y < this.data.length; y++) {
-        for (let x = 0; x < this.data[y].length; x++) {
-          if (this.data[y][x] && this.data[y][x].selected) {
-            let h = this.tileWidth / 3;
-            let w = this.tileWidth * rotateArrows[0].width / rotateArrows[0].height / 3;
-            let x2 = this.x + this.tileWidth * x;
-            let y2 = this.y + this.tileWidth * y;
-
-            if (mouseX >= x2 - w - 20 && mouseX < x2 - 20 && mouseY >= y2 + (this.tileWidth - h) / 2 && mouseY < y2 + h + (this.tileWidth - h) / 2) {
-              pointerCursor = true;
-              return;
-            } else if (mouseX >= x2 + this.tileWidth + 20 && mouseX < x2 + this.tileWidth + w + 20 && mouseY >= y2 + (this.tileWidth - h) / 2 && mouseY < y2 + h + (this.tileWidth - h) / 2) {
-              pointerCursor = true;
-              return;
-            }
-          }
-        }
-      }
-    }
-
-    onMouseReleased() {
-      let tile = draggedTile();
-      if (!tile) return;
-
-      let [x, y] = grid.getCoordinates(tile.x, tile.y);
-      if (x !== null && y !== null) {
-        grid.setTile(x, y, tile);
-        this.placeholder = null;
-        return;
-      }
-      grid.remove(tile);
-      hand.resetTile(tile);
     }
   
   }

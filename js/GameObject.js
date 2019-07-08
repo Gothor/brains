@@ -16,9 +16,9 @@ class GameObject {
     }
 
     static all(type) {
-        if (!type) return _gameObjects;
+        if (!type) return [..._gameObjects];
 
-        return _gameObjects.filter(x => x instanceof type);
+        return [..._gameObjects.filter(x => x instanceof type)];
     }
 
     setPosition(x, y, z) {
@@ -26,7 +26,6 @@ class GameObject {
         this.y = y;
         if (arguments.length >= 3) {
             this.z = z;
-            _gameObjects.sort((a, b) => a.z - b.z);
         }
     }
 
@@ -38,9 +37,18 @@ class GameObject {
 
     draw() {}
     onMouseMoved() {}
-    onMousePressed() {}
-    onMouseReleased() {}
+    onMousePressed() { return false; }
+    onMouseReleased() { return false; }
     onMouseDragged() {}
+
+    set z(v) {
+        this._z = v;
+        _gameObjects.sort((a, b) => a.z - b.z);
+    }
+
+    get z() {
+        return this._z;
+    }
 
 }
 

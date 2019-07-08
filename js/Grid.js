@@ -165,7 +165,7 @@ class Grid {
             }
           }
           if (!found) return false;
-        } else if (c.c === Condition.TYPES.BRIDGE) {
+        } else if (c.type === Condition.TYPES.BRIDGE) {
           let p = path.filter(x => x.spec === Tile.SPEC.BRIDGE);
           if (p.length !== c.arg) return false;
         }

@@ -25,6 +25,8 @@ function preload() {
 }
 
 function loadLevel(n) {
+  localStorage.setItem("currentLevel", n);
+
   if (grid) grid.delete();
 
   grid = new Grid(width, height - 150, levels[n].grid);
@@ -111,6 +113,10 @@ function setup() {
   hand = new Hand(0, height - 150, 7);
   hand.add(GameObject.all(Tile));
 
+  currentLevel = localStorage.getItem("currentLevel");
+  if (currentLevel === null) {
+    currentLevel = 0;
+  }
   loadLevel(currentLevel);
 }
 

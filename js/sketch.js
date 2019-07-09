@@ -254,6 +254,9 @@ let touchStartHandler = function(e) {
 
 let touchEndHandler = function(e) {
   mouseUpHandler();
+  mouseX = -Infinity;
+  mouseY = -Infinity;
+  mouseMoveHandler();
 };
 
 let touchDragHandler = function(e) {

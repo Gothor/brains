@@ -9,6 +9,7 @@ class Condition {
     }
   
     draw(w) {
+      fill(255);
       textSize(24);
       let s;
       switch (this.type) {

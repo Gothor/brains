@@ -1,9 +1,7 @@
 class Button extends GameObject {
 
   constructor(x, y, w, h, image, action) {
-    super(x, y, 2);
-    this.w = w;
-    this.h = h;
+    super(x, y, 2, w, h);
     this.image = image;
     this.action = action;
     this.hover = false;

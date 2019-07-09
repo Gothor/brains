@@ -1,8 +1,7 @@
 class Tile extends GameObject {
 
   constructor(x, y, image) {
-    super(x, y, 1);
-    this.w = 0;
+    super(x, y, 1, image.width, image.height);
 
     this.connections = [];
     this.selected = false;

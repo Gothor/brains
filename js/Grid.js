@@ -1,10 +1,8 @@
 class Grid extends GameObject {
 
-    constructor(w, h, grid) {
-      super(0, 0, 0);
+    constructor(x, y, w, h, grid) {
+      super(x, y, 0, w, h);
 
-      this.w = w;
-      this.h = h;
       this.schema = grid;
       this.tileWidth = 200;
       this.conditions = [];
@@ -14,7 +12,11 @@ class Grid extends GameObject {
       for (let i = 0; i < this.schema.length; i++) {
         this.data[i] = Array(this.schema[0].length);
       }
-  
+    }
+
+    onResize() {
+      if (!this.schema) return;
+
       let diffX = this.schema[0].length;
       let diffY = this.schema.length;
       if (this.w / diffX < this.h / diffY) {
@@ -22,8 +24,37 @@ class Grid extends GameObject {
       } else {
         this.tileWidth = (this.h - 200) / diffY;
       }
-      this.x = (this.w - this.tileWidth * diffX) / 2;
-      this.y = (this.h - this.tileWidth * diffY) / 2;
+      this.gridX = (this.w - this.tileWidth * diffX) / 2;
+      this.gridY = (this.h - this.tileWidth * diffY) / 2;
+
+      for (let y = 0; y < this.data.length; y++) {
+        for (let x = 0; x < this.data[y].length; x++) {
+          if (!this.data[y][x]) continue;
+          let tile = this.data[y][x];
+          tile.w = this.tileWidth;
+          tile.setPosition(this.x + this.gridX + this.tileWidth * x + this.tileWidth / 2, this.y + this.gridY + this.tileWidth * y + this.tileWidth / 2, 1);
+        }
+      }
+
+      if (!rotateLeft.hidden) {
+        let {x, y} = this.selected;
+        let h = this.tileWidth;
+        let w = this.tileWidth * rotateLeft.image.width / rotateLeft.image.height;
+        rotateLeft.setDimensions(w, h);
+        rotateLeft.setPosition(this.x + this.gridX - w - 20 + x * this.tileWidth, this.y + this.gridY + (this.tileWidth - h) / 2 + y * this.tileWidth);
+        rotateRight.setDimensions(w, h);
+        rotateRight.setPosition(this.x + this.gridX + this.tileWidth + 20 + x * this.tileWidth, this.y + this.gridY + (this.tileWidth - h) / 2 + y * this.tileWidth);
+      }
+    }
+
+    setGrid(grid) {
+      this.schema = grid;
+      this.data = Array(this.schema.length);
+      for (let i = 0; i < this.schema.length; i++) {
+        this.data[i] = Array(this.schema[0].length);
+      }
+      this.conditions = [];
+      this.onResize();
     }
 
     isValid(x, y) {
@@ -41,7 +72,7 @@ class Grid extends GameObject {
         if (this.data[y][x]) hand.resetTile(this.data[y][x]);
         this.data[y][x] = tile;
         tile.w = this.tileWidth;
-        tile.setPosition(this.x + this.tileWidth * x + this.tileWidth / 2, this.y + this.tileWidth * y + this.tileWidth / 2, 1);
+        tile.setPosition(this.x + this.gridX + this.tileWidth * x + this.tileWidth / 2, this.y + this.gridY + this.tileWidth * y + this.tileWidth / 2, 1);
       }
     }
 
@@ -73,8 +104,8 @@ class Grid extends GameObject {
     getCoordinates(mouseX, mouseY) {
       let x = null,
         y = null;
-      let _x = Math.floor((mouseX - this.x) / this.tileWidth);
-      let _y = Math.floor((mouseY - this.y) / this.tileWidth);
+      let _x = Math.floor((mouseX - this.gridX - this.x) / this.tileWidth);
+      let _y = Math.floor((mouseY - this.gridY - this.y) / this.tileWidth);
       if (_y >= 0 && _y < this.data.length && _x >= 0 && _x < this.data[0].length && this.schema[_y][_x] === 1) {
         x = _x;
         y = _y;
@@ -83,13 +114,15 @@ class Grid extends GameObject {
     }
   
     draw() {
+      push();
+      translate(this.x, this.y);
       fill("#55691e");
       noStroke();
       rect(0, 0, this.w, this.h);
       fill(0);
   
       push();
-      translate(this.x, this.y);
+      translate(this.gridX, this.gridY);
       // Draw empty tiles
       for (let y = 0; y < this.data.length; y++) {
         for (let x = 0; x < this.data[y].length; x++) {
@@ -124,6 +157,7 @@ class Grid extends GameObject {
         condition.draw(this.tileWidth);
         pop();
       }
+      pop();
       pop();
     }
 
@@ -228,7 +262,7 @@ class Grid extends GameObject {
       let tile = draggedTile();
       if (tile) {
         this.remove(tile);
-        tile.w = width / 8;
+        tile.w = hand.tileWidth;
       }
 
       return false;
@@ -251,14 +285,22 @@ class Grid extends GameObject {
           rotateRight.show();
           let h = this.tileWidth;
           let w = this.tileWidth * rotateLeft.image.width / rotateLeft.image.height;
-          rotateLeft.setPosition(this.x - w - 20 + x * this.tileWidth, this.y + (this.tileWidth - h) / 2 + y * this.tileWidth);
-          rotateRight.setPosition(this.x + this.tileWidth + 20 + x * this.tileWidth, this.y + (this.tileWidth - h) / 2 + y * this.tileWidth);
+          rotateLeft.setDimensions(w, h);
+          rotateLeft.setPosition(this.x + this.gridX - w - 20 + x * this.tileWidth, this.y + this.gridY + (this.tileWidth - h) / 2 + y * this.tileWidth);
+          rotateRight.setDimensions(w, h);
+          rotateRight.setPosition(this.x + this.gridX + this.tileWidth + 20 + x * this.tileWidth, this.y + this.gridY + (this.tileWidth - h) / 2 + y * this.tileWidth);
         }
 
         return
       }
       this.remove(tile);
       hand.resetTile(tile);
+    }
+
+    reset() {
+      for (let tile of hand.tiles) {
+        hand.resetTile(tile);
+      }
     }
 
     onMouseDragged() {

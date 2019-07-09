@@ -1,10 +1,11 @@
 class GameObject {
 
-    constructor(x, y, z) {
+    constructor(x, y, z, w, h) {
         _gameObjects.push(this);
 
         if (z === undefined) z = -1;
         this.setPosition(x, y, z);
+        this.setDimensions(w, h, false);
     }
 
     delete() {
@@ -29,6 +30,15 @@ class GameObject {
         }
     }
 
+    setDimensions(w, h, callResizeCallback) {
+        this.w = w;
+        this.h = h;
+
+        if (callResizeCallback) {
+            this.onResize();
+        }
+    }
+
     distance(o) {
         let dx = this.x - o.x;
         let dy = this.y - o.y;
@@ -40,6 +50,7 @@ class GameObject {
     onMousePressed() { return false; }
     onMouseReleased() { return false; }
     onMouseDragged() {}
+    onResize() {}
 
     set z(v) {
         this._z = v;

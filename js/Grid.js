@@ -83,7 +83,7 @@ class Grid extends GameObject {
     }
   
     draw() {
-      fill("#6b9108");
+      fill("#55691e");
       noStroke();
       rect(0, 0, this.w, this.h);
       fill(0);

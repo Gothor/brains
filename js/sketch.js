@@ -157,7 +157,7 @@ function draw() {
   textSize(32);
   text("Level " + levels[currentLevel].id, 20, 20);
   textSize(12);
-  text("Press R to rotate selected tile     Press ← or → to change level", 15, grid.h + 15);
+  text("Press ← or → to change level", 15, grid.h + 15);
 
   if (win) {
     textSize(128);

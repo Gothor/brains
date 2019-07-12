@@ -1,11 +1,11 @@
 class Button extends GameObject {
 
-  constructor(x, y, w, h, image, action) {
-    super(x, y, 2, w, h);
+  constructor(parent, x, y, w, h, image, action) {
+    super(parent, x, y, 2, w, h);
     this.image = image;
     this.action = action;
     this.hover = false;
-    this.hidden = true;
+    this.hidden = false;
   }
 
   draw() {
@@ -29,7 +29,6 @@ class Button extends GameObject {
     if (this.hidden) return false;
 
     this.hover = (mouseX >= this.x && mouseX < this.x + this.w && mouseY >= this.y && mouseY < this.y + this.h);
-    pointerCursor |= this.hover;
 
     return this.hover;
   }

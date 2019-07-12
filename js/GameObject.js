@@ -1,7 +1,8 @@
 class GameObject {
 
-    constructor(x, y, z, w, h) {
+    constructor(parent, x, y, z, w, h) {
         _gameObjects.push(this);
+        this._parent = parent;
 
         if (z === undefined) z = -1;
         this.setPosition(x, y, z);
@@ -14,6 +15,13 @@ class GameObject {
         }
         let i = _gameObjects.indexOf(this);
         _gameObjects.splice(i, 1);
+    }
+
+    static clear() {
+        let objects = GameObject.all().filter(x => x._parent === _scene);
+        for (let o of objects) {
+            o.delete();
+        }
     }
 
     static all(type) {
@@ -31,6 +39,9 @@ class GameObject {
     }
 
     setDimensions(w, h, callResizeCallback) {
+        if (callResizeCallback === undefined)
+            callResizeCallback = true;
+
         this.w = w;
         this.h = h;
 

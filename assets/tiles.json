@@ -1,0 +1,59 @@
+[
+  {
+    "connections" : [
+      ["tl", "rb", "none"],
+      ["tr", "br", "bridge"],
+      ["rt", "lt", "bridge"],
+      ["bl", "lb", "none"]
+    ]
+  },
+  {
+    "connections" : [
+      ["tl", "rb", "none"],
+      ["tr", "lt", "none"],
+      ["rt", "bl", "none"],
+      ["br", "lb", "none"]
+    ]
+  },
+  {
+    "connections" : [
+      ["tl", "rb", "kiosk"],
+      ["tr", "rt", "none"],
+      ["br", "lb", "none"],
+      ["bl", "lt", "none"]
+    ]
+  },
+  {
+    "connections" : [
+      ["tl", "tr", "none"],
+      ["rt", "lt", "bridge"],
+      ["rb", "br", "none"],
+      ["bl", "lb", "none"]
+    ]
+  },
+  {
+    "connections" : [
+      ["tl", "end", "yinyang"],
+      ["tr", "lt", "none"],
+      ["rt", "rb", "none"],
+      ["br", "end", "yinyang"],
+      ["bl", "lb", "none"]
+    ]
+  },
+  {
+    "connections" : [
+      ["tl", "tr", "none"],
+      ["rt", "bl", "none"],
+      ["rb", "lb", "bridge"],
+      ["br", "lt", "none"]
+    ]
+  },
+  {
+    "connections" : [
+      ["tl", "lb", "none"],
+      ["tr", "rb", "none"],
+      ["rt", "lt", "bridge"],
+      ["br", "bl", "none"]
+    ]
+  }
+]

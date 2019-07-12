@@ -30,7 +30,7 @@ class GridView extends GameObject {
       for (let y = 0; y < this.grid.data.length; y++) {
         for (let x = 0; x < this.grid.data[y].length; x++) {
           if (!this.grid.data[y][x]) continue;
-          let tile = GameObject.all(TileView).filter(x => x.tile === this.grid.data[y][x]);
+          let tile = GameObject.all(TileView).filter(x => x.tile === this.grid.data[y][x])[0];
           if (tile) {
             tile.w = this.tileWidth;
             tile.setPosition(this.x + this.gridX + this.tileWidth * x + this.tileWidth / 2, this.y + this.gridY + this.tileWidth * y + this.tileWidth / 2, 1);

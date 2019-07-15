@@ -5,32 +5,10 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
     <meta charset="utf-8" />
-
+    <title>Brains : Japanese garden</title>
   </head>
   <body>
     <div id="game"></div>
-    <div id="rules">
-      <h1>Règles</h1>
-
-      <p>Pour chaque niveau, vous devez utiliser les tuiles disponibles pour remplir les conditions imposées par la grille.</p>
-
-      <p>Les conditions sont liées au chemin au bout duquel elles sont.</p>
-
-      <p>Les différentes conditions sont les suivantes :</p>
-
-      <dl>
-        <dt>K</dt>
-        <dd>Le chemin doit mener kiosque (rond bleu avec des rayons rouges).</dd>
-        <dt>Y</dt>
-        <dd>Le chemin doit mener à la place en forme de yin et yang.<br><strong>Attention, la route prend fin en arrivant à cette place !</strong></dd>
-        <dt>B<em>x</em></dt>
-        <dd>Le chemin doit passer par <em>x</em> ponts. (Exemple: <em>B2</em>, le chemin doit passer par 2 ponts)</dd>
-        <dt>L<em>x</em></dt>
-        <dd>Le chemin doit rejoindre l'autre condition L<em>x</em> de la grille. (Exemple : <em>L1</em> doit être lié à l'autre <em>L1</em>)</dd>
-        <dt><em>x</em></dt>
-        <dd>Le chemin doit passer par <em>x</em> tuiles. (Exemple : <em>3</em>, le chemin doit passer par 3 tuiles)<br><strong>Un chemin peut passer plusieurs fois par la même tuile, cette tuile est alors comptée à chaque fois.</strong></dd>
-      </dl>
-    </div>
     <script src="js/GameObject.js"></script>
     <script src="js/Game.js"></script>
     <script src="js/GridView.js"></script>

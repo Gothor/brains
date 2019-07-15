@@ -15,11 +15,10 @@ class TileView extends GameObject {
 
   draw() {
     if (!this.image) return;
-
-    /*
-    let [x, y] = grid.getCoordinates(this.x, this.y);
-    if (grid.contains(this) && grid.placeholder && x === grid.placeholder.x && y === grid.placeholder.y) return;
-    */
+    if (this._parent.grid.grid.contains(this.tile) && this._parent.grid.placeholder) {
+      let p = this._parent.grid.grid.getPositionOf(this.tile);
+      if (p.x === this._parent.grid.placeholder.x && p.y === this._parent.grid.placeholder.y) return;
+    }
 
     let d = Date.now() - this.lastHoverEvent;
     d = constrain(d, 0, 100);

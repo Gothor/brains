@@ -14,6 +14,8 @@ class Hand {
         if (!(tiles instanceof Array)) tiles = [tiles];
 
         for (let tile of tiles) {
+            if (this.tiles.includes(tile)) continue;
+
             if (tile instanceof Tile)
                 this.tiles.push(tile);
         }

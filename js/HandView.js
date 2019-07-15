@@ -78,20 +78,12 @@ class HandView extends GameObject {
     this.tiles[i].setPosition(this.x + this.tileWidth / 2 + x, this.y + this.tileWidth / 2 + y);
     this.tiles[i].setDimensions(this.tileWidth, this.tileWidth);
     this.tiles[i].select(false);
+
+    this.hand.add(tile);
   }
 
   remove(tile) {
-    if (tile instanceof Tile) {
-      let i = this.tiles.indexOf(tile);
-      if (i != -1) {
-        this.tiles[i] = null;
-      }
-    } else if (typeof (tile) === 'number') {
-      tile = Math.floor(tile);
-      if (tile >= 0 && tile < this.tiles.length) {
-        this.tiles[i] = null;
-      }
-    }
+    this.hand.remove(tile);
   }
 
   resetTile(tile) {

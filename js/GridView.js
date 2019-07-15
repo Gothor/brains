@@ -20,9 +20,9 @@ class GridView extends GameObject {
       let diffX = this.grid.schema[0].length;
       let diffY = this.grid.schema.length;
       if (this.w / diffX < this.h / diffY) {
-        this.tileWidth = (this.w - 200) / diffX;
+        this.tileWidth = (this.w - 300) / diffX;
       } else {
-        this.tileWidth = (this.h - 200) / diffY;
+        this.tileWidth = (this.h - 300) / diffY;
       }
       this.gridX = (this.w - this.tileWidth * diffX) / 2;
       this.gridY = (this.h - this.tileWidth * diffY) / 2;
@@ -30,7 +30,7 @@ class GridView extends GameObject {
       for (let y = 0; y < this.grid.data.length; y++) {
         for (let x = 0; x < this.grid.data[y].length; x++) {
           if (!this.grid.data[y][x]) continue;
-          let tile = GameObject.all(TileView).filter(x => x.tile === this.grid.data[y][x])[0];
+          let tile = GameObject.all(TileView).filter(t => { return t.tile === this.grid.data[y][x] })[0];
           if (tile) {
             tile.w = this.tileWidth;
             tile.setPosition(this.x + this.gridX + this.tileWidth * x + this.tileWidth / 2, this.y + this.gridY + this.tileWidth * y + this.tileWidth / 2, 1);
@@ -135,6 +135,10 @@ class GridView extends GameObject {
       return [x, y];
     }
 
+    remove(tile) {
+      this.grid.remove(tile);
+    }
+
     onMousePressed() {
       _scene.unselectAll();
 
@@ -143,7 +147,7 @@ class GridView extends GameObject {
 
       let tile = _scene.draggedTile();
       if (tile) {
-        this.grid.remove(tile);
+        this.remove(tile);
         // tile.w = hand.tileWidth;
       }
 
@@ -166,8 +170,8 @@ class GridView extends GameObject {
 
         return;
       }
-      this.grid.remove(tile.tile);
-      _scene.hand.resetTile(tile.tile);
+      this.remove(tile.tile);
+      this._parent.hand.resetTile(tile.tile);
     }
 
     reset() {

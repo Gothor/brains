@@ -128,6 +128,8 @@ class TileView extends GameObject {
       this.origY = this.y;
       this.origMouseX = mouseX;
       this.origMouseY = mouseY;
+      this._parent.hand.remove(this.tile);
+      this._parent.grid.remove(this.tile);
     }
 
     return false;

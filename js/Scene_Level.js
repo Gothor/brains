@@ -103,14 +103,15 @@ class Scene_Level extends Scene {
       o.draw();
     }
 
-    textStyle(NORMAL);
+    textStyle(BOLD);
     textAlign(LEFT, TOP);
-    textSize(32);
+    textSize(64);
     fill(255);
     text("Level " + (this.game.currentLevel + 1), this.grid.x + 20, this.grid.y + 20);
 
     if (this.game.win) {
-      textSize(128);
+      textSize(256);
+      textStyle(BOLD);
       fill(255);
       noStroke();
       textAlign(CENTER, CENTER);
@@ -123,6 +124,7 @@ class Scene_Level extends Scene {
   onResize() {
     this.computeDimensions();
     this.hand.onResize();
+    this.grid.onResize();
   }
 
   onMousePressed() {

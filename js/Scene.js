@@ -54,14 +54,14 @@ class Scene {
         this.onMouseDragged();
       });
     } else {
-      document.addEventListener("touchstart", (e) => {
+      this._mousedown = document.addEventListener("touchstart", (e) => {
         if (this === _scene) {
           updateMouseInput(e);
           this.onMouseMoved();
           this.onMousePressed();
         }
       });
-      document.addEventListener("touchend", () => {
+      this._mouseup = document.addEventListener("touchend", () => {
         if (this === _scene) {
           this.onMouseReleased();
           mouseX = -Infinity;
@@ -69,7 +69,7 @@ class Scene {
           this.onMouseMoved();
         }
       });
-      document.addEventListener("touchmove", (e) => {
+      this._mousedrag = document.addEventListener("touchmove", (e) => {
         if (this === _scene) {
           updateMouseInput(e);
           if (mouseX >= 0 && mouseX < width && mouseY >= 0 && mouseY < height) {

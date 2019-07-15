@@ -8,7 +8,7 @@ class Condition {
       this.arg = arg;
     }
   
-    draw(w) {
+    draw(tw) {
       let s;
       let img;
       switch (this.type) {
@@ -19,21 +19,22 @@ class Condition {
         case Condition.TYPES.BRIDGE: img = bridge; s = this.arg; break;
       }
       fill(255);
-      textSize(32 * w / 291.5);
       textStyle(BOLD);
       textAlign(CENTER, CENTER);
-      let {x, y} = this.getCoordinates(w);
+      textFont("sans-serif");
+      let w = Math.min(120, tw / 4);
+      let {x, y} = this.getCoordinates(tw, w / 2);
+      textSize(w * 64 / 120);
       push();
       translate(x, y);
       if (img)
-        image(img, -w / 12, -(img.height / img.width) * w / 12, w / 6, (img.height / img.width) * w / 6);
+        image(img, -w / 2, -w / 2, w, w);
       if (s)
-        text(s, 0, w / 128);
+        text(s, 0, w / 32);
       pop();
     }
   
-    getCoordinates(w) {
-      const buffer = w / 9;
+    getCoordinates(w, buffer) {
       switch (this.point) {
         case Tile.POINTS.TL:
           return {

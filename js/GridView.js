@@ -19,11 +19,19 @@ class GridView extends GameObject {
 
       let diffX = this.grid.schema[0].length;
       let diffY = this.grid.schema.length;
+
+      let w = this.w / (diffX + 0.5);
+      let h = this.h / (diffY + 0.5);
+      /*
       if (this.w / diffX < this.h / diffY) {
-        this.tileWidth = (this.w - 300) / diffX;
+        this.tileWidth = this.w / diffX;
+        this.tileWidth -= 2 * Math.min(120, this.tileWidth / 4) / diffX;
       } else {
-        this.tileWidth = (this.h - 300) / diffY;
+        this.tileWidth = this.h / diffY;
+        this.tileWidth -= 2 * Math.min(120, this.tileWidth / 4) / diffY;
       }
+      */
+     this.tileWidth = Math.min(w, h);
       this.gridX = (this.w - this.tileWidth * diffX) / 2;
       this.gridY = (this.h - this.tileWidth * diffY) / 2;
 

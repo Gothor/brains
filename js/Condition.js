@@ -9,36 +9,31 @@ class Condition {
     }
   
     draw(w) {
-      fill(255);
-      textSize(24);
       let s;
+      let img;
       switch (this.type) {
-        case Condition.TYPES.KIOSK: s = 'K'; break;
-        case Condition.TYPES.YINYANG: s = 'Y'; break;
-        case Condition.TYPES.NUMBER: s = this.arg; break;
-        case Condition.TYPES.LINK: s = 'L' + this.arg; break;
-        case Condition.TYPES.BRIDGE: s = 'B' + this.arg; break;
+        case Condition.TYPES.KIOSK: img = kiosk; break;
+        case Condition.TYPES.YINYANG: img = yinyang; break;
+        case Condition.TYPES.NUMBER: img = number; s = this.arg; break;
+        case Condition.TYPES.LINK: img = links[this.arg - 1]; break;
+        case Condition.TYPES.BRIDGE: img = bridge; s = this.arg; break;
       }
+      fill(255);
+      textSize(32 * w / 291.5);
+      textStyle(BOLD);
+      textAlign(CENTER, CENTER);
       let {x, y} = this.getCoordinates(w);
-      switch(this.point) {
-        case Tile.POINTS.TL:
-        case Tile.POINTS.TR:
-          textAlign(CENTER, BOTTOM); break;
-        case Tile.POINTS.BL:
-        case Tile.POINTS.BR:
-          textAlign(CENTER, TOP); break;
-        case Tile.POINTS.RT:
-        case Tile.POINTS.RB:
-          textAlign(LEFT, CENTER); break;
-        case Tile.POINTS.LT:
-        case Tile.POINTS.LB:
-          textAlign(RIGHT, CENTER); break;
-      }
-      text(s, x, y);
+      push();
+      translate(x, y);
+      if (img)
+        image(img, -w / 12, -(img.height / img.width) * w / 12, w / 6, (img.height / img.width) * w / 6);
+      if (s)
+        text(s, 0, w / 128);
+      pop();
     }
   
     getCoordinates(w) {
-      const buffer = w / 20;
+      const buffer = w / 9;
       switch (this.point) {
         case Tile.POINTS.TL:
           return {

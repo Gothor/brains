@@ -8,6 +8,7 @@ let images;
 let rotateArrows;
 let next;
 let previous;
+let yinyang, bridge, number, links;
 
 function preload() {
   jsonLevels = loadJSON("assets/levels.json");
@@ -31,6 +32,16 @@ function preload() {
   previous = loadImage("img/previous.png");
   pattern = loadImage("img/background.png");
   gradient = loadImage("img/bgGradient.png");
+  yinyang = loadImage("img/yinyang.png");
+  kiosk = loadImage("img/kiosk.png");
+  bridge = loadImage("img/bridge.png");
+  number = loadImage("img/number.png");
+  links = [
+    loadImage("img/link1.png"),
+    loadImage("img/link2.png"),
+    loadImage("img/link3.png"),
+    loadImage("img/link4.png")
+  ];
 }
 
 function setup() {

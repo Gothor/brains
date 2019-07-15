@@ -23,7 +23,6 @@ class Game {
         done.push(this.currentLevel);
         localStorage.setItem("doneLevels", JSON.stringify(done));
       }
-      console.log(localStorage.getItem("doneLevels"));
     }
     return this.win;
   }

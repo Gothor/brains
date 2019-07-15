@@ -9,6 +9,7 @@ let rotateArrows;
 let next;
 let previous;
 let yinyang, bridge, number, links;
+let shade;
 
 function preload() {
   jsonLevels = loadJSON("assets/levels.json");
@@ -32,6 +33,7 @@ function preload() {
   previous = loadImage("img/previous.png");
   pattern = loadImage("img/background.png");
   gradient = loadImage("img/bgGradient.png");
+  logo = loadImage("img/logo.png");
   yinyang = loadImage("img/yinyang.png");
   kiosk = loadImage("img/kiosk.png");
   bridge = loadImage("img/bridge.png");
@@ -42,6 +44,7 @@ function preload() {
     loadImage("img/link3.png"),
     loadImage("img/link4.png")
   ];
+  shade = loadImage("img/shade.png");
 }
 
 function setup() {
@@ -67,15 +70,8 @@ function setup() {
 
   createCanvas(innerWidth, innerHeight);
 
-  let currentLevel = localStorage.getItem("currentLevel");
-  if (currentLevel === null) {
-    currentLevel = 0;
-  } else {
-    currentLevel = parseInt(currentLevel);
-  }
-
   _game = new Game(levels, tiles);
-  _scene = new Scene_Levels(currentLevel);
+  _scene = new Scene_Home();
 }
 
 function draw() {

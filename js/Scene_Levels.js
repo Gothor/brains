@@ -28,6 +28,8 @@ class Scene_Levels extends Scene {
         return () => this.openLevel(i);
       })(i)));
     }
+
+    this.onResize();
   }
 
   openLevel(i) {
@@ -67,17 +69,21 @@ class Scene_Levels extends Scene {
 
     for (let x = 0; x < width; x += pattern.width) {
       for (let y = 0; y < width; y+= pattern.height) {
-        image(pattern, x, y, pattern.width, pattern.height);
+        image(pattern, x, y, pattern, pattern);
       }
     }
+
+    let ratio = Math.min(500, width / 3) / logo.width;
+    image(logo, (width - logo.width * ratio) / 2, 0, logo.width * ratio, logo.height * ratio);
 
     for (let o of GameObject.all()) {
       o.draw();
     }
+
+    textAlign(CENTER, TOP);
+    textSize(64);
+    text("Choose a level", width / 2, logo.height * ratio);
     
-    let w = width / 5;
-    let h = (height - next.height) / 2;
-    let m = Math.min(w, h);
     fill(255);
     textStyle(BOLD);
     noStroke();
@@ -85,21 +91,30 @@ class Scene_Levels extends Scene {
     textSize(128);
     for (let y = 0; y < 2; y++) {
       for (let x = 0; x < 5; x++) {
-        text(x + y * 5 + 1 + this.start, x * w + w / 2, y * h + 2 * h / 3 + next.height);
+        let i = y * 5 + x;
+        text(x + y * 5 + 1 + this.start, this.levels[i].x + this.levels[i].w / 2, this.levels[i].y + 2 * this.levels[i].h / 3);
       }
     }
   }
 
   onResize() {
-    this.nextArrow.setPosition(width - next.width, 0);
+    let logoHeight = logo.height * Math.min(500, width / 3) / logo.width;
+
+    let ratio = Math.min(300, width / 3) / next.width;
+    this.nextArrow.setDimensions(next.width * ratio, next.height * ratio);
+    this.nextArrow.setPosition(width - next.width * ratio - 20, logoHeight + 64);
+    this.previousArrow.setDimensions(next.width * ratio, next.height * ratio);
+    this.previousArrow.setPosition(20, logoHeight + 64);
+
+    let headerHeight = logoHeight + 64 + next.height * ratio;
 
     let w = width / 5;
-    let h = (height - next.height) / 2;
+    let h = (height - headerHeight) / 2;
     let m = Math.min(w, h);
     for (let i = 0; i < 10; i++) {
       let x = i % 5;
       let y = Math.floor(i / 5);
-      this.levels[i].setPosition(x * w + (w - m) / 2, next.height + y * h);
+      this.levels[i].setPosition(x * w + (w - m) / 2, headerHeight + y * h + (h - m) / 2);
       this.levels[i].setDimensions(m, m);
     }
   }
@@ -110,6 +125,12 @@ class Scene_Levels extends Scene {
     for (let o of objects) {
       if (!hovered) hovered = o.onMouseMoved();
       else o.hover = false;
+    }
+
+    if (hovered) {
+      canvas.style.cursor = "pointer";
+    } else {
+      canvas.style.cursor = "auto";
     }
   };
 

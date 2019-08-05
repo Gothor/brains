@@ -19,6 +19,7 @@ class Scene_Level extends Scene {
 
     this.hand = new HandView(this, game.hand, images);
     this.grid = new GridView(this, game.grid);
+    this.backButton = new Button(this, 0, 0, 0, 0, back, b => this.onBackClicked(b));
 
     this.computeDimensions();
     this.hand.onResize();
@@ -28,6 +29,7 @@ class Scene_Level extends Scene {
   delete() {
     super.delete();
     GameObject.clear();
+    window.removeEventListener("backbutton", this.backButtonHandler);
   }
 
   computeDimensions() {
@@ -68,6 +70,9 @@ class Scene_Level extends Scene {
     this.hand.setPosition(handX, handY);
     this.hand.setDimensions(handWidth, handHeight);
     this.hand.position = handPosition;
+
+    this.backButton.setPosition(this.grid.x + this.grid.w - this.grid.w / 12 - 10, 10);
+    this.backButton.setDimensions(this.grid.w / 12, this.grid.w / 12);
   }
 
   idle() {
@@ -105,9 +110,9 @@ class Scene_Level extends Scene {
 
     textStyle(BOLD);
     textAlign(LEFT, TOP);
-    textSize(64);
+    textSize(Math.min(64, width / 20));
     fill(255);
-    text("Level " + (this.game.currentLevel + 1), this.grid.x + 20, this.grid.y + 20);
+    text("Level " + (this.game.currentLevel + 1), this.grid.x + 10, this.grid.y + 10);
 
     if (this.game.win) {
       textSize(256);
@@ -151,8 +156,6 @@ class Scene_Level extends Scene {
   onMouseMoved() {
     if (!this.hand) return;
 
-    let pointerCursor = false;
-
     let objects = GameObject.all().reverse();
     let hovered = false;
     for (let o of objects) {
@@ -160,7 +163,7 @@ class Scene_Level extends Scene {
       else o.hover = false;
     }
 
-    if (pointerCursor) {
+    if (hovered) {
       canvas.style.cursor = "pointer";
     } else {
       canvas.style.cursor = "auto";
@@ -209,6 +212,10 @@ class Scene_Level extends Scene {
     return GameObject.all(TileView).filter(x => x.selected)[0];
   }
 
+  goBack() {
+    setNextScene(new Scene_Levels(this.game.currentLevel));
+  }
+
   onKeyPressed(keyCode) {
     if (this.game.win) {
       nextLevel();
@@ -217,7 +224,7 @@ class Scene_Level extends Scene {
 
     switch (keyCode) {
       case 27:
-        setNextScene(new Scene_Levels(this.game.currentLevel));
+        this.goBack();
         break;
       case 37:
         this.previousLevel();
@@ -226,5 +233,9 @@ class Scene_Level extends Scene {
         this.nextLevel();
         break;
     }
+  }
+
+  onBackClicked(b) {
+    this.goBack();
   }
 }

@@ -88,7 +88,7 @@ class Scene_Levels extends Scene {
     textStyle(BOLD);
     noStroke();
     textAlign(CENTER, CENTER);
-    textSize(128);
+    textSize(this.levels[0].h * 2 / 3);
     for (let y = 0; y < 2; y++) {
       for (let x = 0; x < 5; x++) {
         let i = y * 5 + x;

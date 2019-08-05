@@ -17,7 +17,18 @@ class Scene_Home extends Scene {
     }
     this.offset = {x: 0, y: 0};
     this.tileOffset = {x: 0, y: 0};
-    this.tileWidth = Math.max(width, height) / numberOfTile;
+    this.clickHere = "Cliquez n'importe où pour commencer";
+    this.computeSizes();
+  }
+
+  computeSizes() {
+    this.tileWidth = Math.max(width, height) / (this.grid.length - 1);
+    this.textSize = 64;
+    textSize(this.textSize);
+    textFont("Amatic SC");
+    while(textWidth(this.clickHere) > width - 20) {
+      textSize(--this.textSize);
+    }
   }
 
   idle() {
@@ -65,20 +76,22 @@ class Scene_Home extends Scene {
 
     push();
     translate(width / 2, height / 2);
-    image(logo, -logo.width / 2, -logo.height / 2);
+    let logoW = Math.min(logo.width, width - 20);
+    let logoH = logoW * logo.height / logo.width;
+    image(logo, -logoW / 2, -logoH / 2, logoW, logoH);
     pop();
 
     fill(255, this.alpha);
     textStyle(BOLD);
     noStroke();
-    textAlign(CENTER, CENTER);
-    textSize(64);
+    textAlign(CENTER, BOTTOM);
+    textSize(this.textSize);
     textFont("Amatic SC");
-    text("Cliquez n'importe où pour commencer", width / 2, height - 50);
+    text(this.clickHere, width / 2, height - 20);
   }
 
   onResize() {
-    this.tileWidth = Math.max(width, height) / (this.grid.length - 1);
+    this.computeSizes();
   }
 
   onMousePressed() {

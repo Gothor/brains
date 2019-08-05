@@ -10,6 +10,7 @@ let next;
 let previous;
 let yinyang, bridge, number, links;
 let shade;
+let back;
 
 function preload() {
   jsonLevels = loadJSON("assets/levels.json");
@@ -45,6 +46,7 @@ function preload() {
     loadImage("img/link4.png")
   ];
   shade = loadImage("img/shade.png");
+  back = loadImage("img/back.png");
 }
 
 function setup() {

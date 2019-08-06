@@ -213,6 +213,9 @@ class Scene_Level extends Scene {
   }
 
   goBack() {
+    for (let tileView of this.hand.tiles) {
+      this.hand.resetTile(tileView.tile);
+    }
     setNextScene(new Scene_Levels(this.game.currentLevel));
   }
 

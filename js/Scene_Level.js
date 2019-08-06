@@ -85,8 +85,8 @@ class Scene_Level extends Scene {
       let r = tile.getRect();
       this.rotateLeft.setDimensions(w, h);
       this.rotateRight.setDimensions(w, h);
-      this.rotateLeft.setPosition(r.x - w - 20, r.y);
-      this.rotateRight.setPosition(r.x + r.w + 20, r.y);
+      this.rotateLeft.setPosition(r.x - w - 5, r.y);
+      this.rotateRight.setPosition(r.x + r.w + 5, r.y);
       this.rotateLeft.show();
       this.rotateRight.show();
     } else {

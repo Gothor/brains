@@ -50,17 +50,17 @@ function preload() {
 }
 
 function setup() {
-  let levels = [];
-  for (let level in jsonLevels) {
+  const levels = [];
+  for (const level in jsonLevels) {
     levels.push(jsonLevels[level]);
   }
   let tiles = [];
-  for (let tile in jsonTiles) {
+  for (const tile in jsonTiles) {
     tiles.push(jsonTiles[tile]);
   }
   for (let i = 0; i < tiles.length; i++) {
     let jsonTile = tiles[i];
-    let tile = new Tile(0, 0, images[i]);
+    let tile = new Tile(i);
     for (let connection of jsonTile.connections) {
       let from = Tile.POINTS[connection[0].toUpperCase()];
       let to = Tile.POINTS[connection[1].toUpperCase()];

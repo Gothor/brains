@@ -1,6 +1,7 @@
 class Tile {
 
-  constructor() {
+  constructor(id) {
+    this.id = id;
     this.connections = [];
   }
 

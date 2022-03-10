@@ -14,7 +14,7 @@ class HandView extends GameObject {
     this.hand = hand;
     this.tiles = Array(hand.tiles.length);
     for (let i = 0; i < hand.tiles.length; i++) {
-      this.tiles[i] = new TileView(this._parent, tileImages[i], hand.tiles[i]);
+      this.tiles[i] = new TileView(this._parent, tileImages[i], hand.tiles.find(t => t.id === i));
       this.tiles[i].select(false);
     }
   }

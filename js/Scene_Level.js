@@ -221,7 +221,7 @@ class Scene_Level extends Scene {
 
   onKeyPressed(keyCode) {
     if (this.game.win) {
-      nextLevel();
+      this.nextLevel();
       return;
     }
 
